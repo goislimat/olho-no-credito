@@ -38,6 +38,7 @@ export default function Navbar() {
             uppercase
             background="horizontalBlueGradient"
             padding="0 20px"
+            onClick={() => console.log("Do login")}
           >
             Entrar
           </Button>
