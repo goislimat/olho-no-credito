@@ -2,12 +2,17 @@ import styled, { css } from "styled-components";
 
 import { colors } from "ui/theme";
 
-interface ButtonProps extends HTMLButtonElement {
+interface ButtonProps {
   uppercase?: true;
   background?: keyof typeof colors;
   padding?: string;
   squared?: true;
   rounded?: true;
+  onClick: () => any;
+}
+
+interface Props extends ButtonProps {
+  children: React.ReactNode;
 }
 
 const StyledButton = styled.button<ButtonProps>`

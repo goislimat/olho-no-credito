@@ -8,7 +8,7 @@ export const NavigationContainer = styled.nav`
   height: 86px;
   display: grid;
   grid-auto-flow: column;
-  padding: 0 30px;
+  padding: 0 20px 0 12px;
   border-bottom: 1px solid ${colors.gray100};
   align-items: center;
 `;

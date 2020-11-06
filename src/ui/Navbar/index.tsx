@@ -12,7 +12,7 @@ import {
 
 const variants = {
   hidden: {
-    x: 400,
+    x: "100%",
     y: -86,
   },
   visible: {
