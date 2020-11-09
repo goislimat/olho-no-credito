@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { colors } from "ui/theme";
+import { breakpoints, colors } from "ui/theme";
 
 interface ButtonProps {
   uppercase?: true;
@@ -8,6 +8,10 @@ interface ButtonProps {
   padding?: string;
   squared?: true;
   rounded?: true;
+  onlyMobile?: true;
+  onlyDesktop?: true;
+  fullWidth?: true;
+  cta?: true;
   onClick: () => any;
 }
 
@@ -24,6 +28,7 @@ const StyledButton = styled.button<ButtonProps>`
   border: none;
   background: none;
   font-size: 10px;
+  font-weight: bold;
   line-height: 29px;
   color: ${colors.white};
   border-radius: 6px;
@@ -57,6 +62,37 @@ const StyledButton = styled.button<ButtonProps>`
     rounded &&
     css`
       border-radius: 50%;
+    `}
+
+    ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `}
+
+    ${({ cta }) =>
+    cta &&
+    css`
+      font-size: 18px;
+      line-height: 30px;
+    `}
+
+    ${({ onlyDesktop }) =>
+    onlyDesktop &&
+    css`
+      display: none;
+
+      ${breakpoints.desktop} {
+        display: flex;
+      }
+    `}
+    
+    ${({ onlyMobile }) =>
+    onlyMobile &&
+    css`
+      ${breakpoints.desktop} {
+        display: none;
+      }
     `}
 `;
 

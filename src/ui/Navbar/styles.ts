@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import { colors } from "ui/theme";
+import { breakpoints, colors } from "ui/theme";
 
 export const NavigationContainer = styled.nav`
+  position: relative;
   background: ${colors.white};
   height: 86px;
   display: grid;
@@ -13,19 +14,55 @@ export const NavigationContainer = styled.nav`
   align-items: center;
 `;
 
+export const NavLinks = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 90px;
+  align-items: center;
+  justify-content: start;
+
+  h1 {
+    width: 0;
+    height: 0;
+  }
+`;
+
+export const NavActions = styled.div``;
+
+export const DesktopMenu = styled.nav`
+  display: none;
+
+  ${breakpoints.desktop} {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 70px;
+    list-style-type: none;
+    font-size: 12px;
+    color: ${colors.gray};
+  }
+`;
+
 export const ActionsContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
   column-gap: 28px;
   justify-content: end;
   align-items: center;
+
+  ${breakpoints.desktop} {
+    border-left: 1px solid ${colors.gray100};
+  }
 `;
 
 export const FloatingMenu = styled(motion.div)`
-  position: relative;
   height: 100vh;
   width: 100%;
   background: ${colors.grayGradient};
+  z-index: 10;
+
+  ${breakpoints.desktop} {
+    display: none;
+  }
 `;
 
 export const FloatingMenuList = styled.ul`

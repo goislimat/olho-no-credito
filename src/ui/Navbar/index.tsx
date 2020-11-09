@@ -4,6 +4,9 @@ import { Icon, Button } from "ui";
 
 import {
   NavigationContainer,
+  NavLinks,
+  NavActions,
+  DesktopMenu,
   ActionsContainer,
   FloatingMenu,
   FloatingMenuList,
@@ -27,25 +30,58 @@ export default function Navbar() {
   return (
     <>
       <NavigationContainer>
-        <a href="#">
-          <img
-            src="/static_assets/images/olho-no-credito-logo.svg"
-            alt="olho no cédito logo"
-          ></img>
-        </a>
-        <ActionsContainer>
-          <Button
-            uppercase
-            background="horizontalBlueGradient"
-            padding="0 20px"
-            onClick={() => console.log("Do login")}
-          >
-            Entrar
-          </Button>
-          <Button squared onClick={() => setIsOpen(true)}>
-            <Icon name="hamburguer" />
-          </Button>
-        </ActionsContainer>
+        <NavLinks>
+          <a href="#">
+            <img
+              src="/static_assets/images/olho-no-credito-logo.svg"
+              alt="olho no cédito logo"
+            ></img>
+            <h1>Olho no crédito</h1>
+          </a>
+
+          <DesktopMenu>
+            <li>
+              <a>Planos</a>
+            </li>
+            <li>
+              <a>Produtos</a>
+            </li>
+            <li>
+              <a>Dúvidas</a>
+            </li>
+            <li>
+              <a>Fale Conosco</a>
+            </li>
+            <li>
+              <a>LGPD</a>
+            </li>
+          </DesktopMenu>
+        </NavLinks>
+
+        <NavActions>
+          <ActionsContainer>
+            <Button
+              uppercase
+              background="greenGradient"
+              padding="0 20px"
+              onClick={() => console.log("Do login")}
+              onlyDesktop
+            >
+              Teste Grátis
+            </Button>
+            <Button
+              uppercase
+              background="blueGradient"
+              padding="0 20px"
+              onClick={() => console.log("Do login")}
+            >
+              Entrar
+            </Button>
+            <Button squared onClick={() => setIsOpen(true)} onlyMobile>
+              <Icon name="hamburguer" />
+            </Button>
+          </ActionsContainer>
+        </NavActions>
       </NavigationContainer>
 
       <FloatingMenu
@@ -60,6 +96,7 @@ export default function Navbar() {
               alt="olho no cédito logo"
             ></img>
           </a>
+
           <ActionsContainer>
             <Button
               rounded
