@@ -3,16 +3,4 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100vh;
-  min-width: 100vw;
-  background: linear-gradient(
-    180deg,
-    #eeeeee 0%,
-    rgba(241, 241, 241, 0.262661) 73.96%,
-    rgba(240, 240, 240, 0) 100%
-  );
 }

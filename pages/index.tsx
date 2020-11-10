@@ -1,19 +1,7 @@
-import { Navbar, MainHeaderWithFigure } from "ui";
+import HomeLayout from "pages/Home";
 
-export default function Home() {
-  return (
-    <>
-      <Navbar />
-      <div
-        style={{
-          position: "absolute",
-          top: "86px",
-          minWidth: "100vw",
-          zIndex: "-1",
-        }}
-      >
-        <MainHeaderWithFigure />
-      </div>
-    </>
-  );
+function Home() {
+  return <HomeLayout />;
 }
+
+export default Home;
