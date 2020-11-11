@@ -1,9 +1,9 @@
-import { Hero, ProductDescription } from "pages/Home/components";
+import { Hero, ProductDescription, Plans } from "pages/Home/components";
 
 function Home() {
   return (
     <>
-      <ProductDescription />
+      <Plans />
     </>
   );
 }

@@ -12,6 +12,7 @@ interface ButtonProps {
   onlyDesktop?: true;
   fullWidth?: true;
   cta?: true;
+  borderRadius?: string;
   onClick: () => any;
 }
 
@@ -75,6 +76,12 @@ const StyledButton = styled.button<ButtonProps>`
     css`
       font-size: 18px;
       line-height: 30px;
+    `}
+
+    ${({ borderRadius }) =>
+    borderRadius &&
+    css`
+      border-radius: ${borderRadius};
     `}
 
     ${({ onlyDesktop }) =>
