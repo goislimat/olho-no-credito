@@ -12,6 +12,7 @@ const PLANS: PlanCardType[] = [
     numberOfQueries: 30,
     valuePerQueryCents: 333,
     monthlyPaymentCents: 9990,
+    featured: true,
   },
   {
     numberOfQueries: 80,
@@ -21,7 +22,12 @@ const PLANS: PlanCardType[] = [
 ];
 
 function Plans() {
-  return <PlansCarousel plans={PLANS} />;
+  return (
+    <PlansCarousel
+      sectionTitle="Conheça mais sobre nossos planos mensais"
+      plans={PLANS}
+    />
+  );
 }
 
 export default Plans;

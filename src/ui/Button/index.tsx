@@ -13,6 +13,7 @@ interface ButtonProps {
   fullWidth?: true;
   cta?: true;
   borderRadius?: string;
+  hasShadow?: true;
   onClick: () => any;
 }
 
@@ -82,6 +83,12 @@ const StyledButton = styled.button<ButtonProps>`
     borderRadius &&
     css`
       border-radius: ${borderRadius};
+    `}
+
+    ${({ hasShadow }) =>
+    hasShadow &&
+    css`
+      box-shadow: 6px 6px 15px rgba(7, 25, 110, 0.24);
     `}
 
     ${({ onlyDesktop }) =>

@@ -3,13 +3,12 @@ import styled from "styled-components";
 import PlanCardType from "types/PlanCard";
 import { asMoney } from "helpers/numberFormat";
 import { Button } from "ui";
-import { colors } from "ui/theme";
+import { colors, typography } from "ui/theme";
 
 const Card = styled.article`
   background: ${colors.white};
   border-radius: 10px;
-  margin: 25px;
-  box-shadow: 0px 0px 12px 5px rgba(184, 184, 184, 1);
+  box-shadow: 5px 3px 25px rgba(0, 0, 0, 0.15);
 `;
 
 const Header = styled.header`
@@ -20,6 +19,7 @@ const Header = styled.header`
   align-items: center;
   padding: 16px 24px 24px;
   border-radius: 10px 10px 0 0;
+  position: relative;
 
   p {
     font-size: 12px;
@@ -35,6 +35,23 @@ const QueriesCount = styled.span`
   font-weight: 600;
 `;
 
+const FeaturedTag = styled.span`
+  background: ${colors.green};
+  color: ${colors.white};
+  font-family: ${typography.inter};
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  display: block;
+  padding: 4px 48px;
+  border-radius: 20px;
+  position: absolute;
+  bottom: -10px;
+`;
+
 const Content = styled.div`
   padding: 48px 24px;
   display: flex;
@@ -48,6 +65,7 @@ const QueryPrice = styled.p`
   line-height: 20px;
   color: ${colors.gray};
   margin-bottom: 48px;
+  text-align: center;
 
   em {
     font-style: normal;
@@ -100,18 +118,20 @@ interface Props {
 }
 
 function PlanCard({
-  plan: { numberOfQueries, valuePerQueryCents, monthlyPaymentCents },
+  plan: { numberOfQueries, valuePerQueryCents, monthlyPaymentCents, featured },
 }: Props) {
   return (
     <Card key={numberOfQueries}>
       <Header>
         <QueriesCount>{numberOfQueries}</QueriesCount>
         <p>Consultas de crédito/mês</p>
+        {featured && <FeaturedTag>Recomendado</FeaturedTag>}
       </Header>
 
       <Content>
         <QueryPrice>
-          Apenas <em>{asMoney(valuePerQueryCents)}</em> por consulta
+          Apenas <em>{asMoney(valuePerQueryCents)}</em> por consulta{" "}
+          {featured && "completa PF"}
         </QueryPrice>
 
         <PriceContainer>
