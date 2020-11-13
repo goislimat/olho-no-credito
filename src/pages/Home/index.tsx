@@ -1,9 +1,14 @@
-import { Hero, ProductDescription, Plans } from "pages/Home/components";
+import {
+  Hero,
+  ProductDescription,
+  Plans,
+  HowEasyIsToQuery,
+} from "pages/Home/components";
 
 function Home() {
   return (
     <>
-      <Plans />
+      <HowEasyIsToQuery />
     </>
   );
 }
