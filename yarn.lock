@@ -1560,7 +1560,7 @@ babel-plugin-react-html-attrs@^3.0.5:
   resolved "https://registry.yarnpkg.com/babel-plugin-react-html-attrs/-/babel-plugin-react-html-attrs-3.0.5.tgz#a4948301a3b5970cfa18cb586b220be98d5ac5e0"
   integrity sha512-o6RClilXl0T7HfVsHUE+xHV0HMBX0SzB94MMIrT52089CA6Sd4eXkY7jLHknQktFQ5UHpSXYPP0x7fUnIY97Qg==
 
-"babel-plugin-styled-components@>= 1":
+"babel-plugin-styled-components@>= 1", babel-plugin-styled-components@^1.11.1:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.11.1.tgz#5296a9e557d736c3186be079fff27c6665d63d76"
   integrity sha512-YwrInHyKUk1PU3avIRdiLyCpM++18Rs1NgyMXEAQC33rIXs/vro0A+stf4sT0Gf22Got+xRWB8Cm0tw+qkRzBA==
