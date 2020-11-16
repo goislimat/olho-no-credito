@@ -30,7 +30,7 @@ const StyledButton = styled.button<ButtonProps>`
   border: none;
   background: none;
   font-size: 10px;
-  font-weight: bold;
+  font-weight: 600;
   line-height: 29px;
   color: ${colors.white};
   border-radius: 6px;

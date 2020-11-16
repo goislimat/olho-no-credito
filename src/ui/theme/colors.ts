@@ -33,6 +33,7 @@ export default {
   opaqueGray: "rgba(236, 236, 236, 0.71)",
   grayGradient:
     "linear-gradient(180deg, #EEEEEE 0%, rgba(241, 241, 241, 0.262661) 73.96%, rgba(240, 240, 240, 0) 100%)",
+  shadow: "5px 3px 25px rgba(0, 0, 0, 0.15)",
 
   black: "#373737",
 

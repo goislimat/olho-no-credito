@@ -8,7 +8,7 @@ import { colors, typography } from "ui/theme";
 const Card = styled.article`
   background: ${colors.white};
   border-radius: 10px;
-  box-shadow: 5px 3px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: ${colors.shadow};
 `;
 
 const Header = styled.header`
