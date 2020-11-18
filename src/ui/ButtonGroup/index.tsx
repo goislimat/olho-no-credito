@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { colors } from "ui/theme";
+import { breakpoints, colors } from "ui/theme";
 
 interface ContainerProps {
   numberOfButtons: number;
@@ -17,11 +17,17 @@ const Container = styled.div<ContainerProps>`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(${numberOfButtons}, 1fr);
+
+    ${breakpoints.desktop} {
+      max-width: 880px;
+      margin: 0 auto;
+    }
   `}
 `;
 
 const Button = styled.button<ButtonProps>`
   ${({ first, last, active }) => css`
+    font-family: Roboto, sans-serif;
     border: 1px solid ${active ? "transparent" : colors.gray300};
     border-radius: ${first ? "5px 0 0 5px" : last ? "0 5px 5px 0" : "0"};
     text-transform: uppercase;
@@ -35,6 +41,11 @@ const Button = styled.button<ButtonProps>`
 
     ${first && "border-right: 0;"}
     ${last && "border-left: 0;"}
+
+    ${breakpoints.desktop} {
+      font-size: 17px;
+      line-height: 29px;
+    }
   `}
 `;
 
