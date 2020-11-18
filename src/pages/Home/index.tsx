@@ -5,11 +5,12 @@ import {
   HowEasyIsToQuery,
   Products,
 } from "pages/Home/components";
+import { Input } from "ui";
 
 function Home() {
   return (
     <>
-      <Products />
+      <Input />
     </>
   );
 }
