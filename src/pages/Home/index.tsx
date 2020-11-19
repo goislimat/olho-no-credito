@@ -4,13 +4,14 @@ import {
   Plans,
   HowEasyIsToQuery,
   Products,
+  FAQ,
 } from "pages/Home/components";
 import { Input } from "ui";
 
 function Home() {
   return (
     <>
-      <Input />
+      <FAQ />
     </>
   );
 }

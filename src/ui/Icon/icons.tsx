@@ -221,4 +221,20 @@ export default {
       </svg>
     );
   },
+  plus: function () {
+    return (
+      <svg
+        width="17"
+        height="17"
+        viewBox="0 0 17 17"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16.07 10.81H10.85V16.15H5.99V10.81H0.77V6.22H5.99V0.849999H10.85V6.22H16.07V10.81Z"
+          fill="#D1D9E8"
+        />
+      </svg>
+    );
+  },
 };
