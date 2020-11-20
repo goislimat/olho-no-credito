@@ -1,12 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { colors } from "ui/theme";
+
+interface InputStylingProps {
+  [propName: string]: any;
+}
 
 const InputContainer = styled.div`
   border: 1px solid ${colors.gray};
   border-radius: 6px;
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<InputStylingProps>`
   border: none;
   outline: none;
   display: block;
@@ -20,16 +24,23 @@ const StyledInput = styled.input`
   ::placeholder {
     color: ${colors.gray300};
   }
+
+  resize: none;
+
+  ${(props) => css`
+    ${props}
+  `}
 `;
 
-interface Props {
+interface Props extends InputStylingProps {
+  as?: "textarea";
   placeholder: string;
 }
 
-function Input({ ...props }: Props) {
+function Input({ as, ...props }: Props) {
   return (
     <InputContainer>
-      <StyledInput {...props} />
+      <StyledInput as={as} {...props} />
     </InputContainer>
   );
 }

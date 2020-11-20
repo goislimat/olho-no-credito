@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 import { Icon } from "ui";
-import { colors, typography } from "ui/theme";
+import { breakpoints, colors, typography } from "ui/theme";
 
 const Container = styled.address`
   display: grid;
   grid-auto-flow: row;
+  grid-template-rows: max-content;
   row-gap: 28px;
   font-style: normal;
   color: ${colors.white};
-  margin-bottom: 62px;
 `;
 
 const AddressItem = styled.div`
@@ -18,10 +18,17 @@ const AddressItem = styled.div`
   column-gap: 18px;
 
   p {
-    font-family: ${typography.poppins};
+    font-family: ${typography.inter};
     font-size: 14px;
     line-height: 21px;
     font-weight: 600;
+  }
+
+  ${breakpoints.desktop} {
+    p {
+      font-size: 18px;
+      line-height: 21px;
+    }
   }
 `;
 
@@ -30,8 +37,8 @@ const SocialMediaContainer = styled.div`
 
   p {
     text-transform: uppercase;
-    font-family: ${typography.poppins};
-    font-weight: 700;
+    font-family: ${typography.inter};
+    font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     margin-bottom: 10px;
@@ -41,6 +48,11 @@ const SocialMediaContainer = styled.div`
     display: grid;
     grid-template-columns: 35px 35px;
     column-gap: 28px;
+  }
+
+  ${breakpoints.desktop} {
+    font-size: 18px;
+    line-height: 21px;
   }
 `;
 
