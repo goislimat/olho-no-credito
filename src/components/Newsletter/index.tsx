@@ -53,8 +53,8 @@ function Newsletter() {
 
       <FormContainer>
         <InputsContainer>
-          <Input placeholder="Nome completo" />
-          <Input placeholder="Email" />
+          <Input background="transparent" placeholder="Nome completo" />
+          <Input background="transparent" placeholder="Email" />
         </InputsContainer>
         <Button onClick={() => {}} background="blueGradient" roboto>
           Assinar Newsletter

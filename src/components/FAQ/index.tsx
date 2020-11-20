@@ -19,6 +19,14 @@ const SELECTED_FAQ = [
   },
 ];
 
+const Container = styled.section`
+  margin-bottom: 90px;
+
+  ${breakpoints.desktop} {
+    margin-bottom: 56px;
+  }
+`;
+
 const Title = styled.h2`
   font-family: ${typography.inter};
   font-size: 20px;
@@ -28,6 +36,11 @@ const Title = styled.h2`
   text-align: center;
   color: ${colors.gray};
   margin-bottom: 48px;
+
+  ${breakpoints.desktop} {
+    font-size: 35px;
+    line-height: 42px;
+  }
 `;
 
 const QuestionsContainer = styled.div`
@@ -68,11 +81,17 @@ const QuestionTitle = styled.h3`
   min-height: 25px;
   display: flex;
   align-items: center;
+
+  ${breakpoints.desktop} {
+    font-size: 18px;
+    line-height: 23px;
+    min-height: 38px;
+  }
 `;
 
 function FAQ() {
   return (
-    <section>
+    <Container>
       <Title>Dúvidas frequentes</Title>
 
       <QuestionsContainer>
@@ -87,7 +106,7 @@ function FAQ() {
           );
         })}
       </QuestionsContainer>
-    </section>
+    </Container>
   );
 }
 

@@ -94,9 +94,8 @@ function Hero() {
           <Button
             background="blueGradient"
             uppercase
-            fullWidth
-            cta
             padding="16px"
+            width="100%"
             onClick={() => console.log("make me do something")}
           >
             Quero contratar

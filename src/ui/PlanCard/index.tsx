@@ -3,12 +3,16 @@ import styled from "styled-components";
 import PlanCardType from "types/PlanCard";
 import { asMoney } from "helpers/numberFormat";
 import { Button } from "ui";
-import { colors, typography } from "ui/theme";
+import { breakpoints, colors, typography } from "ui/theme";
 
 const Card = styled.article`
   background: ${colors.white};
   border-radius: 10px;
   box-shadow: ${colors.shadow};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const Header = styled.header`
@@ -143,13 +147,12 @@ function PlanCard({
 
       <Footer>
         <Button
-          onClick={() => {}}
           background="greenGradient"
           uppercase
-          fullWidth
-          cta
           padding="20px"
-          borderRadius="50px"
+          border-radius="50px"
+          width="100%"
+          onClick={() => {}}
         >
           Eu quero
         </Button>

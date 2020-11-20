@@ -80,7 +80,7 @@ function PlansCarousel({ sectionTitle, plans }: Props) {
             rounded
             background="white"
             padding="20px"
-            hasShadow
+            withShadow
           >
             <Icon name="leftArrow" />
           </Button>
@@ -98,7 +98,7 @@ function PlansCarousel({ sectionTitle, plans }: Props) {
             rounded
             background="white"
             padding="20px"
-            hasShadow
+            withShadow
           >
             <Icon name="leftArrow" />
           </RightButton>

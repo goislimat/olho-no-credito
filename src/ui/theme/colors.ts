@@ -38,4 +38,6 @@ export default {
   black: "#373737",
 
   white: "#FFFFFF",
+
+  transparent: "transparent",
 };

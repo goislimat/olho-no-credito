@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { colors } from "ui/theme";
 
 interface InputStylingProps {
+  background?: keyof typeof colors;
   [propName: string]: any;
 }
 
@@ -27,7 +28,11 @@ const StyledInput = styled.input<InputStylingProps>`
 
   resize: none;
 
-  ${(props) => css`
+  ${({ background, ...props }) => css`
+    ${background &&
+    `
+      background: ${colors[background]};
+    `}
     ${props}
   `}
 `;
