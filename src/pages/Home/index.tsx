@@ -6,13 +6,13 @@ import {
   Products,
   FAQ,
   Newsletter,
+  Footer,
 } from "pages/Home/components";
-import { Input } from "ui";
 
 function Home() {
   return (
     <>
-      <Newsletter />
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { ThreeDescritiveCards } from "components";
+import { ThreeDescriptiveCards } from "components";
 
 const PRODUCT_INFO = [
   {
@@ -26,7 +26,7 @@ const PRODUCT_INFO = [
 
 function ProductDescription() {
   return (
-    <ThreeDescritiveCards
+    <ThreeDescriptiveCards
       sectionTitle="Análise de crédito online perfeita para sua empresa"
       items={PRODUCT_INFO}
     />
