@@ -1,115 +1,81 @@
 import styled, { css } from "styled-components";
 
-import { breakpoints, colors } from "ui/theme";
+import { breakpoints, colors, typography } from "ui/theme";
 
-interface ButtonProps {
-  uppercase?: true;
+interface Props {
   background?: keyof typeof colors;
-  padding?: string;
-  squared?: true;
+  fontSize?: "small" | "medium";
+  roboto?: true;
   rounded?: true;
-  onlyMobile?: true;
-  onlyDesktop?: true;
-  fullWidth?: true;
-  cta?: true;
-  borderRadius?: string;
-  hasShadow?: true;
-  onClick: () => any;
+  uppercase?: true;
+  withShadow?: true;
+  onClick: () => void;
+  [propName: string]: any;
 }
 
-interface Props extends ButtonProps {
-  children: React.ReactNode;
-}
+const Button = styled.button<Props>`
+  ${({
+    background,
+    fontSize,
+    roboto,
+    rounded,
+    uppercase,
+    withShadow,
+    ...props
+  }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    color: ${colors.white};
+    padding: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-family: ${typography.inter};
+    font-size: 18px;
+    line-height: 29px;
 
-const StyledButton = styled.button<ButtonProps>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Inter, sans-serif;
-  padding: 0;
-  border: none;
-  background: none;
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 29px;
-  color: ${colors.white};
-  border-radius: 6px;
-  outline: 0;
-
-  ${({ uppercase }) =>
-    uppercase &&
-    css`
-      text-transform: uppercase;
-    `}
-
-  ${({ background }) =>
-    background &&
-    css`
+    ${background &&
+    `
       background: ${colors[background]};
     `}
 
-  ${({ padding }) =>
-    padding &&
-    css`
-      padding: ${padding};
+    ${fontSize === "small" &&
+    `
+      font-size: 12px;
+      line-height: 14px;
     `}
 
-  ${({ squared }) =>
-    squared &&
-    css`
-      border-radius: 0;
+    ${fontSize === "medium" &&
+    `
+      font-size: 15px;
+      line-height: 17px;
     `}
 
-    ${({ rounded }) =>
-    rounded &&
-    css`
+    ${roboto &&
+    `
+      font-family: ${typography.roboto};
+    `}
+
+    ${rounded &&
+    `
       border-radius: 50%;
     `}
 
-    ${({ fullWidth }) =>
-    fullWidth &&
-    css`
-      width: 100%;
+    ${uppercase &&
+    `
+      text-transform: uppercase;
     `}
 
-    ${({ cta }) =>
-    cta &&
-    css`
-      font-size: 18px;
-      line-height: 30px;
-    `}
-
-    ${({ borderRadius }) =>
-    borderRadius &&
-    css`
-      border-radius: ${borderRadius};
-    `}
-
-    ${({ hasShadow }) =>
-    hasShadow &&
-    css`
+    ${withShadow &&
+    `
       box-shadow: 6px 6px 15px rgba(7, 25, 110, 0.24);
     `}
 
-    ${({ onlyDesktop }) =>
-    onlyDesktop &&
-    css`
-      display: none;
-
-      ${breakpoints.desktop} {
-        display: flex;
-      }
-    `}
-    
-    ${({ onlyMobile }) =>
-    onlyMobile &&
-    css`
-      ${breakpoints.desktop} {
-        display: none;
-      }
-    `}
+    ${props}
+  `}
 `;
 
-export default function Button({ children, ...props }: Props) {
-  return <StyledButton {...props}>{children}</StyledButton>;
-}
+export default Button;

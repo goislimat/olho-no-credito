@@ -4,7 +4,6 @@ import { colors } from "ui/theme";
 const InputContainer = styled.div`
   border: 1px solid ${colors.gray};
   border-radius: 6px;
-  margin: 50px 20px;
 `;
 
 const StyledInput = styled.input`
@@ -16,16 +15,21 @@ const StyledInput = styled.input`
   line-height: 18px;
   padding: 16px;
   color: ${colors.gray300};
+  border-radius: 6px;
 
   ::placeholder {
     color: ${colors.gray300};
   }
 `;
 
-function Input() {
+interface Props {
+  placeholder: string;
+}
+
+function Input({ ...props }: Props) {
   return (
     <InputContainer>
-      <StyledInput placeholder="Razão Social" />
+      <StyledInput {...props} />
     </InputContainer>
   );
 }

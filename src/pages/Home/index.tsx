@@ -5,13 +5,14 @@ import {
   HowEasyIsToQuery,
   Products,
   FAQ,
+  Newsletter,
 } from "pages/Home/components";
 import { Input } from "ui";
 
 function Home() {
   return (
     <>
-      <FAQ />
+      <Newsletter />
     </>
   );
 }
