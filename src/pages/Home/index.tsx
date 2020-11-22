@@ -10,7 +10,7 @@ import {
   Newsletter,
   Footer,
 } from "pages/Home/components";
-import { Button, Icon } from "ui";
+import { Button, Icon, Navbar } from "ui";
 import { colors } from "ui/theme";
 
 const ButtonContainer = styled.div`
@@ -31,6 +31,7 @@ const ButtonContainer = styled.div`
 function Home() {
   return (
     <>
+      <Navbar />
       <Hero />
 
       <ButtonContainer>
