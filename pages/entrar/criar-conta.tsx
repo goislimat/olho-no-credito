@@ -1,5 +1,7 @@
+import Signup from "pages/Auth/Signup";
+
 function CriarConta() {
-  return <div>criar conta</div>;
+  return <Signup />;
 }
 
 export default CriarConta;

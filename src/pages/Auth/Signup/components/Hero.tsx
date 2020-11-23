@@ -12,7 +12,7 @@ const Title = styled.h1`
   text-align: center;
   font-weight: 600;
   color: ${colors.green};
-  margin: 80px 0 50px;
+  margin: 40px 0 8px;
 
   ${breakpoints.desktop} {
     font-family: ${typography.inter};
@@ -21,8 +21,45 @@ const Title = styled.h1`
     letter-spacing: 2%;
     font-weight: 600;
     max-width: 453px;
-    margin: 100px 0 60px;
+    margin: 160px 0 8px;
   }
+`;
+
+const Description = styled.p`
+  color: ${colors.gray};
+  font-size: 18px;
+  line-height: 25px;
+  margin-bottom: 30px;
+`;
+
+const Stepper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    font-family: ${typography.inter};
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 29px;
+    color: ${colors.gray600};
+  }
+
+  .active {
+    color: ${colors.green};
+  }
+`;
+
+const ConnectLine = styled.div`
+  width: 30px;
+  border-bottom: 1px solid ${colors.gray100};
 `;
 
 const Form = styled.form`
@@ -87,23 +124,33 @@ const RememberPassword = styled.p`
 function Hero() {
   return (
     <MainHeroWithFigure removeImageOnMobile>
-      <Title>Acesse sua conta aqui</Title>
+      <Title>Cadastre-se</Title>
+      <Description>Para realizar suas consultas</Description>
+
+      <Stepper>
+        <span className="active">1</span>
+        <ConnectLine />
+        <span>2</span>
+      </Stepper>
 
       <Form>
+        <Input placeholder="CNPJ" />
+        <Input placeholder="Telefone" />
         <Input placeholder="Email" />
         <Input placeholder="Senha" />
+        <Input placeholder="Confirmar senha" />
         <Button
           background="blueGradient"
           padding="12px"
           uppercase
           onClick={() => {}}
         >
-          Entrar
+          Próximo
         </Button>
       </Form>
 
       <RememberPassword>
-        Esqueceu sua senha? <a href="#">Clique aqui.</a>
+        Já é cadastrado? <a href="#">Clique aqui.</a>
       </RememberPassword>
 
       <LogoContainer>

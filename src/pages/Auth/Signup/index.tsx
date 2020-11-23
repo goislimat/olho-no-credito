@@ -1,5 +1,7 @@
+import { Hero } from "pages/Auth/Signup/components";
+
 function Signup() {
-  return <div>signup screen</div>;
+  return <Hero />;
 }
 
 export default Signup;
