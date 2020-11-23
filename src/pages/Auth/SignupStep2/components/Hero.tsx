@@ -82,6 +82,12 @@ const Form = styled.form`
   }
 `;
 
+const FormGroup = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 25px;
+`;
+
 const LogoContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -128,24 +134,28 @@ function Hero() {
       <Description>Para realizar suas consultas</Description>
 
       <Stepper>
-        <span className="active">1</span>
+        <span>1</span>
         <ConnectLine />
-        <span>2</span>
+        <span className="active">2</span>
       </Stepper>
 
       <Form>
-        <Input placeholder="CNPJ" />
-        <Input placeholder="Telefone" />
-        <Input placeholder="Email" />
-        <Input placeholder="Senha" />
-        <Input placeholder="Confirmar senha" />
+        <Input placeholder="CEP" />
+        <Input placeholder="Endereço" />
+        <FormGroup>
+          <Input placeholder="Número" />
+          <Input placeholder="Complemento" />
+        </FormGroup>
+        <Input placeholder="Bairro" />
+        <Input placeholder="Cidade" />
+        <Input placeholder="Estado" />
         <Button
           background="blueGradient"
           padding="12px"
           uppercase
           onClick={() => {}}
         >
-          Próximo
+          Finalizar
         </Button>
       </Form>
 
