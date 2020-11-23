@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { breakpoints } from "ui/theme";
 
@@ -10,16 +10,24 @@ export const Container = styled.section`
   padding: 34px 30px 0;
 `;
 
-export const ImageContainer = styled.div`
-  position: absolute;
-  top: 170px;
-  left: 0;
+export const ImageContainer = styled.div<{ removeImageOnMobile?: true }>`
+  ${({ removeImageOnMobile }) => css`
+    ${removeImageOnMobile &&
+    `
+      display: none;
+    `}
 
-  ${breakpoints.desktop} {
-    top: -170px;
+    position: absolute;
+    top: 170px;
+    left: 0;
 
-    img {
-      width: 200%;
+    ${breakpoints.desktop} {
+      display: block;
+      top: -170px;
+
+      img {
+        width: 200%;
+      }
     }
-  }
+  `}
 `;

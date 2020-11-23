@@ -1,5 +1,7 @@
+import Auth from "pages/Auth";
+
 function Entrar() {
-  return <div>entrar</div>;
+  return <Auth />;
 }
 
 export default Entrar;

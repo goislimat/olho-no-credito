@@ -64,7 +64,7 @@ export default function Navbar() {
               uppercase
               background="greenGradient"
               padding="0 20px"
-              onClick={() => console.log("Do login")}
+              onClick={() => {}}
               onlyDesktop
             >
               Teste Grátis
@@ -73,7 +73,7 @@ export default function Navbar() {
               uppercase
               background="blueGradient"
               padding="0 20px"
-              onClick={() => console.log("Do login")}
+              onClick={() => {}}
             >
               Entrar
             </Button>

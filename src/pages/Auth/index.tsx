@@ -1,5 +1,7 @@
+import { Hero } from "pages/Auth/components";
+
 function Auth() {
-  return <div>auth screen</div>;
+  return <Hero />;
 }
 
 export default Auth;

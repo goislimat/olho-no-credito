@@ -1,13 +1,14 @@
 import { Container, ImageContainer } from "./styles";
 
 interface Props {
+  removeImageOnMobile?: true;
   children: React.ReactNode;
 }
 
-function MainHeaderWithFigure({ children }: Props) {
+function MainHeaderWithFigure({ removeImageOnMobile, children }: Props) {
   return (
     <Container>
-      <ImageContainer>
+      <ImageContainer removeImageOnMobile={removeImageOnMobile}>
         <img
           src="/static_assets/images/main-mascote.svg"
           alt="mascote olho no crédito"

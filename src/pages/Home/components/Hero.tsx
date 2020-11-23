@@ -96,7 +96,7 @@ function Hero() {
             uppercase
             padding="16px"
             width="100%"
-            onClick={() => console.log("make me do something")}
+            onClick={() => {}}
           >
             Quero contratar
           </Button>
