@@ -1,5 +1,7 @@
+import LoginScreen from "pages/Auth/Login";
+
 function Login() {
-  return <div>login</div>;
+  return <LoginScreen />;
 }
 
 export default Login;

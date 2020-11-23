@@ -1,5 +1,7 @@
+import { Hero } from "./components";
+
 function Login() {
-  return <div>login screen</div>;
+  return <Hero />;
 }
 
 export default Login;
