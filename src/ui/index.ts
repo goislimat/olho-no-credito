@@ -7,3 +7,4 @@ export { default as Navbar } from "ui/Navbar";
 export { default as OrderedList } from "ui/OrderedList";
 export { default as PlanCard } from "ui/PlanCard";
 export { default as QuodLogo } from "./QuodLogo";
+export { default as StepCounter } from "./StepCounter";

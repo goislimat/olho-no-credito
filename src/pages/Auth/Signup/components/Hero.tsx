@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
-import { Button, Input, QuodLogo } from "ui";
+import { Button, Input, QuodLogo, StepCounter } from "ui";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -29,36 +29,6 @@ const Description = styled.p`
   font-size: 18px;
   line-height: 25px;
   margin-bottom: 30px;
-`;
-
-const Stepper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-
-  span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 34px;
-    height: 34px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    font-family: ${typography.inter};
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 29px;
-    color: ${colors.gray600};
-  }
-
-  .active {
-    color: ${colors.green};
-  }
-`;
-
-const ConnectLine = styled.div`
-  width: 30px;
-  border-bottom: 1px solid ${colors.gray100};
 `;
 
 const Form = styled.form`
@@ -99,11 +69,7 @@ function Hero() {
       <Title>Cadastre-se</Title>
       <Description>Para realizar suas consultas</Description>
 
-      <Stepper>
-        <span className="active">1</span>
-        <ConnectLine />
-        <span>2</span>
-      </Stepper>
+      <StepCounter numberOfSteps={2} currentActiveStep={1} />
 
       <Form>
         <Input placeholder="CNPJ" />
