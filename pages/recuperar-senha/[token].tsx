@@ -1,5 +1,7 @@
+import RecoveryToken from "pages/Auth/RecoveryToken";
+
 function RecuperarSenhaToken() {
-  return <div>recuperar senha token</div>;
+  return <RecoveryToken />;
 }
 
 export default RecuperarSenhaToken;
