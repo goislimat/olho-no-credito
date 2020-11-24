@@ -1,9 +1,9 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
 import { Button, Input } from "ui";
-import Image from "next/image";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
