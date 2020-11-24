@@ -1,5 +1,7 @@
+import RecoveryConfirmation from "pages/Auth/RecoveryConfirmation";
+
 function Confirmar() {
-  return <div>confirmar recuperação de senha</div>;
+  return <RecoveryConfirmation />;
 }
 
 export default Confirmar;

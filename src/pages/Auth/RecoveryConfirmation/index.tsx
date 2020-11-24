@@ -1,5 +1,7 @@
+import { Hero } from "pages/Auth/RecoveryConfirmation/components";
+
 function RecoveryConfirmation() {
-  return <div>RecoveryConfirmation</div>;
+  return <Hero />;
 }
 
 export default RecoveryConfirmation;

@@ -1,9 +1,8 @@
-import Image from "next/image";
 import styled from "styled-components";
 
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
-import { Button, Input } from "ui";
+import { Button, Input, QuodLogo } from "ui";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -82,33 +81,6 @@ const Form = styled.form`
   }
 `;
 
-const LogoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 40px;
-
-  p {
-    font-family: ${typography.inter};
-    text-transform: uppercase;
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    color: ${colors.blue300};
-  }
-
-  div {
-    width: 113px;
-  }
-
-  ${breakpoints.desktop} {
-    div {
-      width: 191px;
-    }
-  }
-`;
-
 const RememberPassword = styled.p`
   font-size: 18px;
   line-height: 25px;
@@ -153,17 +125,7 @@ function Hero() {
         Já é cadastrado? <a href="#">Clique aqui.</a>
       </RememberPassword>
 
-      <LogoContainer>
-        <p>Distribuidor autorizado</p>
-        <div>
-          <Image
-            src="/static_assets/images/quod.svg"
-            alt="quod logo"
-            width="191"
-            height="103"
-          />
-        </div>
-      </LogoContainer>
+      <QuodLogo />
     </MainHeroWithFigure>
   );
 }

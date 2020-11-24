@@ -1,9 +1,8 @@
-import Image from "next/image";
 import styled from "styled-components";
 
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
-import { Button } from "ui";
+import { Button, QuodLogo } from "ui";
 
 const Title = styled.h1`
   font-size: 18px;
@@ -57,26 +56,6 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const LogoContainer = styled.div`
-  display: none;
-
-  ${breakpoints.desktop} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    p {
-      font-family: ${typography.inter};
-      text-transform: uppercase;
-      font-size: 13px;
-      line-height: 15px;
-      letter-spacing: 1px;
-      font-weight: 600;
-      color: ${colors.blue300};
-    }
-  }
-`;
-
 function Hero() {
   return (
     <MainHeroWithFigure removeImageOnMobile>
@@ -93,15 +72,7 @@ function Hero() {
         </Button>
       </ButtonContainer>
 
-      <LogoContainer>
-        <p>Distribuidor autorizado</p>
-        <Image
-          src="/static_assets/images/quod.svg"
-          alt="quod logo"
-          width="191"
-          height="103"
-        />
-      </LogoContainer>
+      <QuodLogo />
     </MainHeroWithFigure>
   );
 }

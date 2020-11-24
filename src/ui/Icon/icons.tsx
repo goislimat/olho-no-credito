@@ -425,4 +425,17 @@ export default {
       </svg>
     );
   },
+  check: function () {
+    return (
+      <svg
+        width="52"
+        height="35"
+        viewBox="0 0 52 35"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M2 11.4565L21.3247 31L50 2" stroke="white" stroke-width="5" />
+      </svg>
+    );
+  },
 };
