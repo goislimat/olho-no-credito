@@ -53,25 +53,44 @@ const Title = styled.h2`
   font-weight: 600;
   color: ${colors.white};
   text-align: center;
-  margin-bottom: 58px;
+  margin-bottom: 32px;
 
   ${breakpoints.desktop} {
     font-size: 35px;
     line-height: 42px;
     max-width: 395px;
-    margin: 105px auto 89px;
+    margin: 105px auto 24px;
+  }
+`;
+
+const Subtitle = styled.p`
+  color: ${colors.gray300};
+  font-size: 15px;
+  line-height: 17px;
+  text-align: center;
+  margin-bottom: 48px;
+
+  ${breakpoints.desktop} {
+    font-size: 18px;
+    line-height: 25px;
+    max-width: 920px;
+    margin: 0 auto;
+    margin-bottom: 68px;
   }
 `;
 
 interface Props {
   sectionTitle: string;
+  subtitle?: string;
   plans: PlanCardType[];
 }
 
-function PlansCarousel({ sectionTitle, plans }: Props) {
+function PlansCarousel({ sectionTitle, subtitle, plans }: Props) {
   return (
     <Container>
       <Title>{sectionTitle}</Title>
+
+      {subtitle && <Subtitle>{subtitle}</Subtitle>}
 
       <ContentWithControls>
         <Control>

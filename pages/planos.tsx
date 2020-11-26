@@ -1,5 +1,7 @@
+import Plans from "pages/Plans";
+
 function Planos() {
-  return <div>Planos</div>;
+  return <Plans />;
 }
 
 export default Planos;

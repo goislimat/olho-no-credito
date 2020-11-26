@@ -1,5 +1,23 @@
+import {
+  FAQ,
+  Footer,
+  HowEasyIsToQuery,
+  Newsletter,
+  PlansSection,
+  WhatTheProductDelivers,
+} from "./components";
+
 function Plans() {
-  return <div>Plans</div>;
+  return (
+    <>
+      <PlansSection />
+      <HowEasyIsToQuery />
+      <WhatTheProductDelivers />
+      <Newsletter />
+      <FAQ />
+      <Footer />
+    </>
+  );
 }
 
 export default Plans;
