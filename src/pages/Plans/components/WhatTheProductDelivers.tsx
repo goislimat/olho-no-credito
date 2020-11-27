@@ -1,5 +1,7 @@
+import { HowTheProductWorks } from "components";
+
 function WhatTheProductDelivers() {
-  return <div>WhatTheProductDelivers</div>;
+  return <HowTheProductWorks />;
 }
 
 export default WhatTheProductDelivers;
