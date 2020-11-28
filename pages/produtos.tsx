@@ -1,5 +1,7 @@
+import Products from "pages/Products";
+
 function Produtos() {
-  return <div>Produtos</div>;
+  return <Products />;
 }
 
 export default Produtos;
