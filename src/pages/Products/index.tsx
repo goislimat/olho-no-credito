@@ -1,4 +1,4 @@
-import { FAQ, Newsletter } from "sharedSections";
+import { FAQ, FooterWithoutForm, Newsletter } from "sharedSections";
 import { ProductDetails } from "./sections";
 
 function Products() {
@@ -7,6 +7,7 @@ function Products() {
       <ProductDetails />
       <Newsletter />
       <FAQ />
+      <FooterWithoutForm />
     </>
   );
 }
