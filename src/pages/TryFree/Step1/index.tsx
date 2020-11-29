@@ -14,7 +14,7 @@ const StyledButton = styled(Button)`
 
 function TryFreeStep1() {
   return (
-    <PageTemplate currentStep={1}>
+    <PageTemplate currentStep={1} stepTitle="Insira o CNPJ da sua empresa">
       <Form>
         <Input placeholder="CNPJ" />
         <Input placeholder="Telefone" />

@@ -34,18 +34,31 @@ export const Title = styled.h1`
   }
 `;
 
-export const QueryContainer = styled.div`
-  ${breakpoints.desktop} {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-  }
+export const QueryContainer = styled.div<{ isFirstStep: boolean }>`
+  ${({ isFirstStep }) => css`
+    ${breakpoints.desktop} {
+      grid-column: 2 / 3;
+      grid-row: ${!isFirstStep ? "1 / 3" : "2 / 3"};
+    }
+  `}
 `;
 
-export const QueryCard = styled.div`
-  background: ${colors.white};
-  box-shadow: ${colors.shadow};
-  border-radius: 10px;
-  margin-bottom: 50px;
+export const QueryCard = styled.div<{ isFirstStep: boolean }>`
+  ${({ isFirstStep }) => css`
+    ${!isFirstStep &&
+    css`
+      display: none;
+    `}
+
+    background: ${colors.white};
+    box-shadow: ${colors.shadow};
+    border-radius: 10px;
+    margin-bottom: 50px;
+
+    ${breakpoints.desktop} {
+      display: block;
+    }
+  `}
 `;
 
 export const CardTitle = styled.p`

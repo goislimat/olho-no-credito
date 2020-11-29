@@ -32,11 +32,19 @@ const QUERY_RESULT_INFO = [
 
 interface Props {
   currentStep: number;
+  stepTitle: string;
   showQueryResultInfo?: true;
   children: ReactNode;
 }
 
-function PageTemplate({ currentStep, showQueryResultInfo, children }: Props) {
+function PageTemplate({
+  currentStep,
+  stepTitle,
+  showQueryResultInfo,
+  children,
+}: Props) {
+  const isFirstStep = currentStep === 1;
+
   return (
     <>
       <LogoContainer>
@@ -44,10 +52,10 @@ function PageTemplate({ currentStep, showQueryResultInfo, children }: Props) {
       </LogoContainer>
 
       <Container>
-        <Title>Teste Grátis</Title>
+        {isFirstStep && <Title>Teste Grátis</Title>}
 
-        <QueryContainer>
-          <QueryCard>
+        <QueryContainer isFirstStep={isFirstStep}>
+          <QueryCard isFirstStep={isFirstStep}>
             <CardTitle>
               <span>5</span> Consultas
             </CardTitle>
@@ -69,7 +77,7 @@ function PageTemplate({ currentStep, showQueryResultInfo, children }: Props) {
         </QueryContainer>
 
         <FormStepContainer>
-          <FormTitle>Insira o CNPJ da sua empresa</FormTitle>
+          <FormTitle>{stepTitle}</FormTitle>
 
           <StepContainer>
             <StepCounter numberOfSteps={4} currentActiveStep={currentStep} />
