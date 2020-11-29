@@ -1,5 +1,7 @@
+import { Step1 } from "pages/TryFree";
+
 function TesteGratisPasso1() {
-  return <div>TesteGratisPasso1</div>;
+  return <Step1 />;
 }
 
 export default TesteGratisPasso1;

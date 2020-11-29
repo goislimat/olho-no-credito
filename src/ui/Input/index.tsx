@@ -7,7 +7,7 @@ interface InputStylingProps {
 }
 
 const InputContainer = styled.div`
-  border: 1px solid ${colors.gray};
+  border: 0.5px solid ${colors.gray};
   border-radius: 6px;
 `;
 

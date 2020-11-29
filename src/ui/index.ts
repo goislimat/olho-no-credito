@@ -4,6 +4,7 @@ export { default as DescriptiveIcon } from "ui/DescriptiveIcon";
 export { default as Icon } from "ui/Icon";
 export { default as Input } from "ui/Input";
 export { default as Navbar } from "ui/Navbar";
+export { default as OlhoNoCreditoLogo } from "./OlhoNoCreditoLogo";
 export { default as OrderedList } from "ui/OrderedList";
 export { default as PlanCard } from "ui/PlanCard";
 export { default as QuodLogo } from "./QuodLogo";

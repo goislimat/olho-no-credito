@@ -7,7 +7,6 @@ import { colors, typography } from "ui/theme";
 const Stepper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
 
   span {
     display: flex;
@@ -22,6 +21,7 @@ const Stepper = styled.div`
     font-size: 15px;
     line-height: 29px;
     color: ${colors.gray600};
+    background: #eeeeee;
   }
 
   .active {
