@@ -42,6 +42,12 @@ export const DesktopMenu = styled.nav`
   }
 `;
 
+export const MenuLinks = styled.a`
+  text-decoration: none;
+  color: ${colors.gray};
+  cursor: pointer;
+`;
+
 export const ActionsContainer = styled.div`
   display: grid;
   grid-auto-flow: column;

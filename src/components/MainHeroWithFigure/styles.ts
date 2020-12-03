@@ -18,6 +18,7 @@ export const ImageContainer = styled.div<{ removeImageOnMobile?: true }>`
     `}
 
     position: absolute;
+    z-index: -10;
     top: 170px;
     left: 0;
 

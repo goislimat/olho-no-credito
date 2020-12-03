@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+import Link from "next/link";
 import styled, { css } from "styled-components";
 
 import { breakpoints, colors, typography } from "ui/theme";
@@ -9,11 +11,41 @@ interface Props {
   rounded?: true;
   uppercase?: true;
   withShadow?: true;
-  onClick: () => void;
+  onlyMobile?: true;
+  onlyDesktop?: true;
   [propName: string]: any;
 }
 
-const Button = styled.button<Props>`
+interface ButtonComponent {
+  link?: true;
+  href?: string;
+  onClick?: () => void;
+  children: ReactNode;
+}
+
+function CustomButton({
+  link,
+  href,
+  onClick,
+  children,
+  ...props
+}: ButtonComponent | Props) {
+  if (link) {
+    return (
+      <Link href={href} passHref>
+        <a {...props}>{children}</a>
+      </Link>
+    );
+  }
+
+  return (
+    <button onClick={onClick} {...props}>
+      {children}
+    </button>
+  );
+}
+
+const Button = styled(CustomButton)<Props>`
   ${({
     background,
     fontSize,
@@ -21,6 +53,8 @@ const Button = styled.button<Props>`
     rounded,
     uppercase,
     withShadow,
+    onlyMobile,
+    onlyDesktop,
     ...props
   }) => css`
     display: flex;
@@ -36,42 +70,59 @@ const Button = styled.button<Props>`
     font-family: ${typography.inter};
     font-size: 18px;
     line-height: 29px;
+    text-decoration: none;
 
     ${background &&
-    `
+    css`
       background: ${colors[background]};
     `}
 
     ${fontSize === "small" &&
-    `
+    css`
       font-size: 12px;
       line-height: 14px;
     `}
 
     ${fontSize === "medium" &&
-    `
+    css`
       font-size: 15px;
       line-height: 17px;
     `}
 
     ${roboto &&
-    `
+    css`
       font-family: ${typography.roboto};
     `}
 
     ${rounded &&
-    `
+    css`
       border-radius: 50%;
     `}
 
     ${uppercase &&
-    `
+    css`
       text-transform: uppercase;
     `}
 
     ${withShadow &&
-    `
+    css`
       box-shadow: 6px 6px 15px rgba(7, 25, 110, 0.24);
+    `}
+
+    ${onlyMobile &&
+    css`
+      ${breakpoints.desktop} {
+        display: none;
+      }
+    `}
+
+    ${onlyDesktop &&
+    css`
+      display: none;
+
+      ${breakpoints.desktop} {
+        display: block;
+      }
     `}
 
     ${props}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 import { Icon, Button } from "ui";
 
@@ -11,6 +12,7 @@ import {
   FloatingMenu,
   FloatingMenuList,
   MascoteHolder,
+  MenuLinks,
 } from "./styles";
 
 const variants = {
@@ -31,29 +33,40 @@ export default function Navbar() {
     <>
       <NavigationContainer>
         <NavLinks>
-          <a href="#">
-            <img
-              src="/static_assets/images/olho-no-credito-logo.svg"
-              alt="olho no cédito logo"
-            ></img>
-            <h1>Olho no crédito</h1>
-          </a>
+          <Link href="/">
+            <a>
+              <img
+                src="/static_assets/images/olho-no-credito-logo.svg"
+                alt="olho no crédito logo"
+              ></img>
+            </a>
+          </Link>
 
           <DesktopMenu>
             <li>
-              <a>Planos</a>
+              <Link href="/planos">
+                <MenuLinks>Planos</MenuLinks>
+              </Link>
             </li>
             <li>
-              <a>Produtos</a>
+              <Link href="/produtos">
+                <MenuLinks>Produtos</MenuLinks>
+              </Link>
             </li>
             <li>
-              <a>Dúvidas</a>
+              <Link href="/duvidas">
+                <MenuLinks>Dúvidas</MenuLinks>
+              </Link>
             </li>
             <li>
-              <a>Fale Conosco</a>
+              <Link href="/fale-conosco">
+                <MenuLinks>Fale Conosco</MenuLinks>
+              </Link>
             </li>
             <li>
-              <a>LGPD</a>
+              <Link href="/lgpd">
+                <MenuLinks>LGPD</MenuLinks>
+              </Link>
             </li>
           </DesktopMenu>
         </NavLinks>
@@ -61,23 +74,38 @@ export default function Navbar() {
         <NavActions>
           <ActionsContainer>
             <Button
+              link
+              href="/teste-gratis/passo-1"
               uppercase
               background="greenGradient"
-              padding="0 20px"
+              padding="16px 12px"
+              min-width="157px"
+              font-size="15px"
+              line-height="17px"
               onClick={() => {}}
               onlyDesktop
             >
               Teste Grátis
             </Button>
+
             <Button
               uppercase
               background="blueGradient"
-              padding="0 20px"
+              padding="16px 12px"
+              min-width="157px"
+              font-size="15px"
+              line-height="17px"
               onClick={() => {}}
             >
               Entrar
             </Button>
-            <Button squared onClick={() => setIsOpen(true)} onlyMobile>
+            <Button
+              onClick={() => {
+                console.log("setting is open to true");
+                setIsOpen(true);
+              }}
+              onlyMobile
+            >
               <Icon name="hamburguer" />
             </Button>
           </ActionsContainer>
@@ -90,10 +118,10 @@ export default function Navbar() {
         variants={variants}
       >
         <NavigationContainer>
-          <a href="#">
+          <a>
             <img
               src="/static_assets/images/olho-no-credito-logo.svg"
-              alt="olho no cédito logo"
+              alt="olho no crédito logo"
             ></img>
           </a>
 
@@ -102,7 +130,10 @@ export default function Navbar() {
               rounded
               background="green600"
               padding="14px"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                console.log("setting is open to false");
+                setIsOpen(false);
+              }}
             >
               <Icon name="cross" />
             </Button>
