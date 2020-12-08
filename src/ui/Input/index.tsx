@@ -30,7 +30,7 @@ const StyledInput = styled.input<InputStylingProps>`
 
   ${({ background, ...props }) => css`
     ${background &&
-    `
+    css`
       background: ${colors[background]};
     `}
     ${props}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 import { MainHeroWithFigure } from "components";
@@ -73,7 +74,10 @@ function Hero() {
         </Button>
       </Form>
       <RememberPassword>
-        Esqueceu sua senha? <a href="#">Clique aqui.</a>
+        Esqueceu sua senha?{" "}
+        <Link href="/recuperar-senha">
+          <a>Clique aqui.</a>
+        </Link>
       </RememberPassword>
       <QuodLogo />
     </MainHeroWithFigure>

@@ -1,3 +1,4 @@
+import { Navbar } from "ui";
 import {
   FAQ,
   Footer,
@@ -10,6 +11,7 @@ import {
 function Plans() {
   return (
     <>
+      <Navbar />
       <PlansSection />
       <HowEasyIsToQuery />
       <WhatTheProductDelivers />
