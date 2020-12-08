@@ -21,7 +21,7 @@ import {
 
 const QUERY_RESULT_INFO = [
   "Dados Cadastrais",
-  "Quopd Score",
+  "Quod Score",
   "Pontualidade de pagamento",
   "Relacionamento com o mercado",
   "Participação em empresas",

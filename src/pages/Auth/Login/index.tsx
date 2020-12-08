@@ -1,7 +1,13 @@
+import { Navbar } from "ui";
 import { Hero } from "./components";
 
 function Login() {
-  return <Hero />;
+  return (
+    <>
+      <Navbar />
+      <Hero />
+    </>
+  );
 }
 
 export default Login;

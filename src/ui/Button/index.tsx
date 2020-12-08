@@ -16,20 +16,36 @@ interface Props {
   [propName: string]: any;
 }
 
-interface ButtonComponent {
-  link?: true;
-  href?: string;
-  onClick?: () => void;
+interface DefaultButtonProps {
   children: ReactNode;
 }
 
+interface LinkButtonProps extends DefaultButtonProps {
+  link: true;
+  href: string;
+}
+interface ButtonProps extends DefaultButtonProps {
+  onClick: () => void;
+}
+
+function CustomButton({
+  link,
+  href,
+  children,
+  ...props
+}: LinkButtonProps | Props): JSX.Element;
+function CustomButton({
+  onClick,
+  children,
+  ...props
+}: ButtonProps | Props): JSX.Element;
 function CustomButton({
   link,
   href,
   onClick,
   children,
   ...props
-}: ButtonComponent | Props) {
+}: any): JSX.Element {
   if (link) {
     return (
       <Link href={href} passHref>
@@ -71,6 +87,7 @@ const Button = styled(CustomButton)<Props>`
     font-size: 18px;
     line-height: 29px;
     text-decoration: none;
+    text-align: center;
 
     ${background &&
     css`

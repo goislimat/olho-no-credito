@@ -89,13 +89,14 @@ export default function Navbar() {
             </Button>
 
             <Button
+              link
+              href="/entrar"
               uppercase
               background="blueGradient"
               padding="16px 12px"
               min-width="157px"
               font-size="15px"
               line-height="17px"
-              onClick={() => {}}
             >
               Entrar
             </Button>
@@ -111,7 +112,7 @@ export default function Navbar() {
           </ActionsContainer>
         </NavActions>
       </NavigationContainer>
-
+      {/* 
       <FloatingMenu
         initial="hidden"
         animate={isOpen ? "visible" : "hidden"}
@@ -164,7 +165,7 @@ export default function Navbar() {
             alt="mascote olho no crédito"
           />
         </MascoteHolder>
-      </FloatingMenu>
+      </FloatingMenu> */}
     </>
   );
 }

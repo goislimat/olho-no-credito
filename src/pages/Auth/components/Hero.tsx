@@ -64,10 +64,20 @@ function Hero() {
       </Title>
 
       <ButtonContainer>
-        <Button background="blueGradient" padding="16px" onClick={() => {}}>
+        <Button
+          link
+          href="/entrar/login"
+          background="blueGradient"
+          padding="16px"
+        >
           Já sou cliente
         </Button>
-        <Button background="blueGradient" padding="16px" onClick={() => {}}>
+        <Button
+          link
+          href="/entrar/criar-conta"
+          background="blueGradient"
+          padding="16px"
+        >
           Preciso de um cadastro
         </Button>
       </ButtonContainer>
