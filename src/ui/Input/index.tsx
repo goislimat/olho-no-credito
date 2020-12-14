@@ -1,51 +1,47 @@
 import styled, { css } from "styled-components";
+import { Icon } from "ui";
+import icons from "ui/Icon/icons";
 import { colors } from "ui/theme";
 
-interface InputStylingProps {
-  background?: keyof typeof colors;
-  [propName: string]: any;
-}
-
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ hasError: boolean }>`
   border: 0.5px solid ${colors.gray};
   border-radius: 6px;
-`;
+  display: flex;
+  padding: 20px;
 
-const StyledInput = styled.input<InputStylingProps>`
-  border: none;
-  outline: none;
-  display: block;
-  width: 100%;
-  font-size: 15px;
-  line-height: 18px;
-  padding: 16px;
-  color: ${colors.gray300};
-  border-radius: 6px;
-
-  ::placeholder {
-    color: ${colors.gray300};
-  }
-
-  resize: none;
-
-  ${({ background, ...props }) => css`
-    ${background &&
+  ${({ hasError }) => css`
+    ${hasError &&
     css`
-      background: ${colors[background]};
+      border-color: #ff0120;
+
+      svg path {
+        fill: #ff0120;
+      }
     `}
-    ${props}
   `}
 `;
 
-interface Props extends InputStylingProps {
+const CustomInput = styled.input`
+  border: 0;
+  outline: 0;
+  background: transparent;
+  width: 100%;
+  resize: none;
+`;
+
+interface FormProps {
   as?: "textarea";
   placeholder: string;
+  icon?: keyof typeof icons;
+  hasError: boolean;
+  [propName: string]: any;
 }
 
-function Input({ as, ...props }: Props) {
+function Input({ as, icon, hasError, ...props }: FormProps) {
   return (
-    <InputContainer>
-      <StyledInput as={as} {...props} />
+    <InputContainer hasError={hasError}>
+      <CustomInput as={as} {...props} />
+      {icon && <Icon name={icon} />}
     </InputContainer>
   );
 }

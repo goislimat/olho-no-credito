@@ -144,6 +144,11 @@ const Button = styled(CustomButton)<Props>`
 
     ${props}
   `}
+
+  :disabled {
+    background: #f1f1f1;
+    color: #999;
+  }
 `;
 
 export default Button;

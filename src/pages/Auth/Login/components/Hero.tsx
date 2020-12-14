@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
 import { Button, Input, QuodLogo } from "ui";
+import { useFormik } from "formik";
+import loginForm from "helpers/validations/loginForm";
+import { useState } from "react";
+import { successApiRequest, failApiRequest } from "mocks/apiRequests";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -58,17 +62,68 @@ const RememberPassword = styled.p`
 `;
 
 function Hero() {
+  const [submitionFailed, setSubmissionFailed] = useState<boolean>(false);
+
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    isValid,
+    isSubmitting,
+    setFieldValue,
+    values: { email, password },
+  } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginForm,
+    onSubmit: async function (values) {
+      try {
+        setSubmissionFailed(false);
+
+        // TODO: replace this mock timeout for the actual api request
+        const res = await failApiRequest(values);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+        setFieldValue("password", "");
+        setSubmissionFailed(true);
+      }
+    },
+  });
+
   return (
     <MainHeroWithFigure removeImageOnMobile>
       <Title>Acesse sua conta aqui</Title>
-      <Form>
-        <Input placeholder="Email" />
-        <Input placeholder="Senha" />
+      <Form onSubmit={handleSubmit}>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          icon="filledMail"
+          placeholder="Email"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={email}
+          hasError={submitionFailed}
+        />
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          icon="padlock"
+          placeholder="Senha"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={password}
+          hasError={submitionFailed}
+        />
         <Button
           background="blueGradient"
           padding="12px"
           uppercase
-          onClick={() => {}}
+          disabled={!isValid || isSubmitting}
         >
           Entrar
         </Button>
