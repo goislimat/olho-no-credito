@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { breakpoints, colors } from "ui/theme";
 
 export const NavigationContainer = styled.nav`
+  z-index: 3;
   position: relative;
   background: ${colors.white};
   height: 86px;

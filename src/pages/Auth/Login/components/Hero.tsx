@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import loginForm from "helpers/validations/loginForm";
 import { useState } from "react";
 import { successApiRequest, failApiRequest } from "mocks/apiRequests";
+import { useToast } from "ui/Toast";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -64,6 +65,8 @@ const RememberPassword = styled.p`
 function Hero() {
   const [submitionFailed, setSubmissionFailed] = useState<boolean>(false);
 
+  const toast = useToast();
+
   const {
     handleSubmit,
     handleChange,
@@ -83,11 +86,15 @@ function Hero() {
         setSubmissionFailed(false);
 
         // TODO: replace this mock timeout for the actual api request
-        const res = await failApiRequest(values);
+        const res = await successApiRequest(values);
         console.log(res);
       } catch (err) {
         console.log(err);
         setFieldValue("password", "");
+        toast?.error({
+          title: "Email e senha inválidos",
+          subtitle: "Se preciso utilize a recuperação de senha",
+        });
         setSubmissionFailed(true);
       }
     },

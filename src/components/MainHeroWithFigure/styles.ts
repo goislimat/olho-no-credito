@@ -25,6 +25,7 @@ export const ImageContainer = styled.div<{ removeImageOnMobile?: true }>`
     ${breakpoints.desktop} {
       display: block;
       top: -170px;
+      z-index: 2;
 
       img {
         width: 200%;
