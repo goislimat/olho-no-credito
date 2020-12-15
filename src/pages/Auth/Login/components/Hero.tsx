@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import { MainHeroWithFigure } from "components";
@@ -65,6 +66,7 @@ const RememberPassword = styled.p`
 function Hero() {
   const [submitionFailed, setSubmissionFailed] = useState<boolean>(false);
 
+  const router = useRouter();
   const toast = useToast();
 
   const {
@@ -88,6 +90,7 @@ function Hero() {
         // TODO: replace this mock timeout for the actual api request
         const res = await successApiRequest(values);
         console.log(res);
+        router.push("/dashboard");
       } catch (err) {
         console.log(err);
         setFieldValue("password", "");
