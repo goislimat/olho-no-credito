@@ -64,7 +64,7 @@ const RememberPassword = styled.p`
 `;
 
 function Hero() {
-  const [submitionFailed, setSubmissionFailed] = useState<boolean>(false);
+  const [submissionFailed, setSubmissionFailed] = useState<boolean>(false);
 
   const router = useRouter();
   const toast = useToast();
@@ -116,7 +116,7 @@ function Hero() {
           onChange={handleChange}
           onBlur={handleBlur}
           value={email}
-          hasError={submitionFailed}
+          hasError={submissionFailed}
         />
         <Input
           id="password"
@@ -127,7 +127,7 @@ function Hero() {
           onChange={handleChange}
           onBlur={handleBlur}
           value={password}
-          hasError={submitionFailed}
+          hasError={submissionFailed}
         />
         <Button
           background="blueGradient"
