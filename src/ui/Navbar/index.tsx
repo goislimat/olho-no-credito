@@ -102,7 +102,6 @@ export default function Navbar() {
             </Button>
             <Button
               onClick={() => {
-                console.log("setting is open to true");
                 setIsOpen(true);
               }}
               onlyMobile

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
 import { Button, Input, QuodLogo, StepCounter } from "ui";
+import { useSignup } from "pages/Auth/context/SignupContext";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -70,6 +71,10 @@ const RememberPassword = styled.p`
 `;
 
 function Hero() {
+  const signup = useSignup();
+
+  console.log(signup?.getAllSignupInfo());
+
   return (
     <MainHeroWithFigure removeImageOnMobile>
       <Title>Cadastre-se</Title>
@@ -78,7 +83,7 @@ function Hero() {
       <StepCounter numberOfSteps={2} currentActiveStep={2} />
 
       <Form>
-        <Input placeholder="CEP" />
+        {/* <Input placeholder="CEP" />
         <Input placeholder="Endereço" />
         <FormGroup>
           <Input placeholder="Número" />
@@ -86,7 +91,7 @@ function Hero() {
         </FormGroup>
         <Input placeholder="Bairro" />
         <Input placeholder="Cidade" />
-        <Input placeholder="Estado" />
+        <Input placeholder="Estado" /> */}
         <Button
           background="blueGradient"
           padding="12px"

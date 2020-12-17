@@ -9,6 +9,8 @@ import { successApiRequest } from "mocks/apiRequests";
 import { Button, Input, QuodLogo, StepCounter } from "ui";
 import { breakpoints, colors, typography } from "ui/theme";
 import { useToast } from "ui/Toast";
+import { useSignup } from "pages/Auth/context/SignupContext";
+import signupFormValidation from "helpers/validations/signupForm";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -79,11 +81,16 @@ function Hero() {
 
   const router = useRouter();
   const toast = useToast();
+  const signup = useSignup();
 
   const {
     handleChange,
+    handleSubmit,
     values: { cnpj, phone, email, password, passwordConfirmation },
     setFieldValue,
+    errors,
+    isValid,
+    isSubmitting,
   } = useFormik({
     initialValues: {
       cnpj: "",
@@ -92,19 +99,29 @@ function Hero() {
       password: "",
       passwordConfirmation: "",
     },
+    validationSchema: signupFormValidation,
     onSubmit: async function (values) {
       try {
+        console.log("beginning");
         setSubmissionFailed(false);
-
+        console.log("set submitting");
         // TODO: replace this mock timeout for the actual api request
         const res = await successApiRequest(values);
         console.log(res);
+
+        signup?.storeSignupInfo(values);
+        console.log("stored info");
         router.push("/entrar/criar-conta-passo-2");
+        console.log("navigated");
       } catch (err) {
         console.log(err);
 
+        console.log("errored");
+
         setFieldValue("password", "");
         setFieldValue("passwordConfirmation", "");
+
+        console.log("cleared fields");
 
         toast?.error({
           title: "Senhas inválidas",
@@ -113,6 +130,8 @@ function Hero() {
       }
     },
   });
+
+  console.log(errors);
 
   return (
     <MainHeroWithFigure removeImageOnMobile>
@@ -123,7 +142,7 @@ function Hero() {
         <StepCounter numberOfSteps={2} currentActiveStep={1} />
       </StepContainer>
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Input
           id="cnpj"
           name="cnpj"
@@ -134,7 +153,7 @@ function Hero() {
           icon="creditCard"
           onChange={handleChange}
           value={cnpj}
-          hasError={false}
+          hasError={!!errors.cnpj}
         />
         <Input
           id="phone"
@@ -146,7 +165,7 @@ function Hero() {
           icon="filledPhone"
           onChange={handleChange}
           value={phone}
-          hasError={false}
+          hasError={!!errors.phone}
         />
         <Input
           id="email"
@@ -157,7 +176,7 @@ function Hero() {
           icon="filledMail"
           onChange={handleChange}
           value={email}
-          hasError={false}
+          hasError={!!errors.email}
         />
         <Input
           id="password"
@@ -168,25 +187,25 @@ function Hero() {
           icon="padlock"
           onChange={handleChange}
           value={password}
-          hasError={false}
+          hasError={!!errors.password}
         />
         <Input
-          id="password-confirmation"
-          name="password-confirmation"
+          id="passwordConfirmation"
+          name="passwordConfirmation"
           type="password"
           label="Confirmar senha"
           placeholder="Confirmar senha"
           icon="padlock"
           onChange={handleChange}
           value={passwordConfirmation}
-          hasError={false}
+          hasError={!!errors.passwordConfirmation}
         />
 
         <Button
           background="blueGradient"
           padding="12px"
           uppercase
-          onClick={() => {}}
+          disabled={!isValid || isSubmitting}
         >
           Próximo
         </Button>

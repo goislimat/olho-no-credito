@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-import { emailValidation, passwordValidation } from "./fieldValidations";
+import { emailValidation, passwordValidation } from "./fieldsValidation";
 
 export default Yup.object({
   email: emailValidation,
