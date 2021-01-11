@@ -102,26 +102,19 @@ function Hero() {
     validationSchema: signupFormValidation,
     onSubmit: async function (values) {
       try {
-        console.log("beginning");
         setSubmissionFailed(false);
-        console.log("set submitting");
+
         // TODO: replace this mock timeout for the actual api request
         const res = await successApiRequest(values);
         console.log(res);
 
         signup?.storeSignupInfo(values);
-        console.log("stored info");
         router.push("/entrar/criar-conta-passo-2");
-        console.log("navigated");
       } catch (err) {
         console.log(err);
 
-        console.log("errored");
-
         setFieldValue("password", "");
         setFieldValue("passwordConfirmation", "");
-
-        console.log("cleared fields");
 
         toast?.error({
           title: "Senhas inválidas",

@@ -4,4 +4,5 @@ export default {
     if (value.length > 5 && value[6] === "9") return "(99) 99999-9999";
     return "(99) 9999-9999";
   },
+  zipCode: (value: string) => "99999-999",
 };
