@@ -1,8 +1,14 @@
+import { useRouter } from "next/router";
 import styled from "styled-components";
+import { useFormik } from "formik";
 
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
 import { Button, Input, QuodLogo } from "ui";
+import passwordRecovery from "helpers/validations/passwordRecovery";
+import { useToast } from "ui/Toast";
+import { successApiRequest } from "mocks/apiRequests";
+import { usePasswordRecovery } from "pages/Auth/context/PasswordRecoveryContext";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -54,20 +60,89 @@ const Form = styled.form`
   }
 `;
 
+const isEmpty = (field: string): boolean => !field.trim();
+
 function Hero() {
+  const router = useRouter();
+  const toast = useToast();
+  const passwordRecovery = usePasswordRecovery();
+
+  const {
+    handleChange,
+    handleSubmit,
+    values: { email, cnpj },
+    errors,
+    isValid,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      email: "",
+      cnpj: "",
+    },
+    validationSchema: passwordRecovery,
+    onSubmit: async function (values) {
+      if (isEmpty(values.email) && isEmpty(values.cnpj)) {
+        toast?.error({
+          title: "Informe email ou CNPJ",
+        });
+      }
+
+      try {
+        // TODO: replace this mock timeout for the actual api request
+        // res may have the user email even if they fill only cnpj
+        // if it's needed, the any could be replaced for the returned
+        // structure. Suggested: { data: {email: "teste@email.com"} }
+        const res: any = await successApiRequest(values);
+        console.log(res);
+
+        passwordRecovery?.storePasswordRecoveryInfo({
+          ...values,
+          email: res.data.email,
+        });
+        router.push("/recuperar-senha/confirmar");
+      } catch (err) {
+        toast?.error({
+          title: "Dados inválidos",
+          subtitle: "Tente novamente",
+        });
+      }
+    },
+  });
+
   return (
     <MainHeroWithFigure removeImageOnMobile>
       <Title>Recuperar senha</Title>
 
-      <Form>
-        <Input placeholder="Email" />
+      <Form onSubmit={handleSubmit}>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          label="Email"
+          placeholder="Email"
+          icon="mail"
+          onChange={handleChange}
+          value={email}
+          hasError={!!errors.email}
+        />
         <p>ou</p>
-        <Input placeholder="CPF" />
+        <Input
+          id="cnpj"
+          name="cnpj"
+          type="text"
+          label="CNPJ"
+          placeholder="CNPJ"
+          mask="cnpj"
+          icon="creditCard"
+          onChange={handleChange}
+          value={cnpj}
+          hasError={!!errors.cnpj}
+        />
         <Button
           background="blueGradient"
           padding="12px"
           uppercase
-          onClick={() => {}}
+          disabled={!isValid || isSubmitting}
         >
           Entrar
         </Button>
