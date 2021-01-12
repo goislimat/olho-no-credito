@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
 import { Button, Icon, QuodLogo } from "ui";
+import { usePasswordRecovery } from "pages/Auth/context/PasswordRecoveryContext";
 
 const Header = styled.div`
   display: flex;
@@ -64,7 +65,16 @@ const ButtonContainer = styled.div`
   }
 `;
 
+function maskEmail(email: string | undefined): string {
+  if (!email) return "";
+
+  const [user, provider] = email.split("@");
+  return `${user.substring(0, 2)}****@${provider}`;
+}
+
 function Hero() {
+  const passwordRecovery = usePasswordRecovery();
+
   return (
     <MainHeroWithFigure removeImageOnMobile>
       <Header>
@@ -73,8 +83,10 @@ function Hero() {
         </IconContainer>
         <Title>Bom trabalho!</Title>
         <p>
-          Foi enviado um link para recuperação de senha no seu e-mail
-          (me****@gmail.com). Confira também sua caixa de SPAMS
+          {`Foi enviado um link para recuperação de senha no seu e-mail
+          (${maskEmail(
+            passwordRecovery?.getRecoveryEmail()
+          )}). Confira também sua caixa de SPAMS`}
         </p>
       </Header>
 

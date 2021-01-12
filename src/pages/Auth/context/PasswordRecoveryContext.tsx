@@ -7,6 +7,7 @@ interface PasswordRecoveryFields {
 
 interface ContextProps {
   storePasswordRecoveryInfo: (props: PasswordRecoveryFields) => void;
+  getRecoveryEmail: () => string | undefined;
 }
 
 const PasswordRecoveryContext = createContext<ContextProps | null>(null);
@@ -22,6 +23,10 @@ export function PasswordRecoveryProvider({ children }: Props) {
     setPasswordRecoveryData,
   ] = useState<PasswordRecoveryFields | null>(null);
 
+  function getRecoveryEmail(): string | undefined {
+    return passwordRecoveryData?.email;
+  }
+
   function storePasswordRecoveryInfo(props: PasswordRecoveryFields) {
     setPasswordRecoveryData({
       ...passwordRecoveryData,
@@ -30,7 +35,9 @@ export function PasswordRecoveryProvider({ children }: Props) {
   }
 
   return (
-    <PasswordRecoveryContext.Provider value={{ storePasswordRecoveryInfo }}>
+    <PasswordRecoveryContext.Provider
+      value={{ storePasswordRecoveryInfo, getRecoveryEmail }}
+    >
       {children}
     </PasswordRecoveryContext.Provider>
   );

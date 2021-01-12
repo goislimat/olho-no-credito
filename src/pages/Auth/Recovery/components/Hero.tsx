@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
 import { Button, Input, QuodLogo } from "ui";
-import passwordRecovery from "helpers/validations/passwordRecovery";
+import passwordRecoveryValidation from "helpers/validations/passwordRecovery";
 import { useToast } from "ui/Toast";
 import { successApiRequest } from "mocks/apiRequests";
 import { usePasswordRecovery } from "pages/Auth/context/PasswordRecoveryContext";
@@ -79,7 +79,7 @@ function Hero() {
       email: "",
       cnpj: "",
     },
-    validationSchema: passwordRecovery,
+    validationSchema: passwordRecoveryValidation,
     onSubmit: async function (values) {
       if (isEmpty(values.email) && isEmpty(values.cnpj)) {
         toast?.error({
@@ -88,11 +88,13 @@ function Hero() {
       }
 
       try {
-        // TODO: replace this mock timeout for the actual api request
         // res may have the user email even if they fill only cnpj
         // if it's needed, the any could be replaced for the returned
         // structure. Suggested: { data: {email: "teste@email.com"} }
-        const res: any = await successApiRequest(values);
+
+        // TODO: replace this mock timeout for the actual api request
+        // const res: any = await successApiRequest(values);
+        const res = { data: { email: values.email } };
         console.log(res);
 
         passwordRecovery?.storePasswordRecoveryInfo({
@@ -101,6 +103,7 @@ function Hero() {
         });
         router.push("/recuperar-senha/confirmar");
       } catch (err) {
+        console.log(err);
         toast?.error({
           title: "Dados inválidos",
           subtitle: "Tente novamente",
@@ -142,6 +145,7 @@ function Hero() {
           background="blueGradient"
           padding="12px"
           uppercase
+          type="submit"
           disabled={!isValid || isSubmitting}
         >
           Entrar
