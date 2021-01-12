@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { MainHeroWithFigure } from "components";
 import { breakpoints, colors, typography } from "ui/theme";
 import { Button, Input } from "ui";
+import { useFormik } from "formik";
+import resetPasswordValidation from "helpers/validations/resetPassword";
+import { useRouter } from "next/router";
+import { useToast } from "ui/Toast";
+import { successApiRequest } from "mocks/apiRequests";
 
 const Title = styled.h1`
   font-family: ${typography.inter};
@@ -56,6 +61,37 @@ const Form = styled.form`
 `;
 
 function Hero() {
+  const router = useRouter();
+  const toast = useToast();
+
+  const {
+    handleSubmit,
+    handleChange,
+    values: { password, passwordConfirmation },
+    errors,
+    isValid,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      password: "",
+      passwordConfirmation: "",
+    },
+    validationSchema: resetPasswordValidation,
+    onSubmit: async function (values) {
+      try {
+        // TODO: replace for an actual api call
+        const res = await successApiRequest(values);
+        console.log(res);
+
+        router.push("/recuperar-senha/sucesso");
+      } catch (err) {
+        toast?.error({
+          title: "Erro ao definir nova senha",
+        });
+      }
+    },
+  });
+
   return (
     <MainHeroWithFigure removeImageOnMobile>
       <Image
@@ -67,17 +103,40 @@ function Hero() {
 
       <Title>Redefinir senha</Title>
 
-      <Form>
-        <Input placeholder="Senha" background="transparent" />
-        <Input placeholder="Confirmar senha" background="transparent" />
+      <Form onSubmit={handleSubmit}>
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          label="Senha"
+          placeholder="Senha"
+          icon="whitePadlock"
+          isWhite
+          onChange={handleChange}
+          value={password}
+          hasError={!!errors.password}
+        />
+        <Input
+          id="passwordConfirmation"
+          name="passwordConfirmation"
+          type="password"
+          label="Confirmar senha"
+          placeholder="Confirmar senha"
+          icon="whitePadlock"
+          isWhite
+          onChange={handleChange}
+          value={passwordConfirmation}
+          hasError={!!errors.passwordConfirmation}
+        />
 
         <Button
           background="blueGradient"
           padding="12px"
           uppercase
-          onClick={() => {}}
+          type="submit"
+          disabled={!isValid || isSubmitting}
         >
-          Redefinir
+          Recuperar
         </Button>
       </Form>
     </MainHeroWithFigure>
