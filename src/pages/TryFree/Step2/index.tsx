@@ -71,6 +71,10 @@ function TryFreeStep2() {
     },
   });
 
+  function goBack() {
+    router.back();
+  }
+
   return (
     <PageTemplate
       currentStep={2}
@@ -161,7 +165,8 @@ function TryFreeStep2() {
             background="greenGradient"
             uppercase
             padding="12px"
-            onClick={() => {}}
+            type="button"
+            onClick={goBack}
           >
             Voltar
           </Button>
@@ -169,7 +174,7 @@ function TryFreeStep2() {
             background="blueGradient"
             uppercase
             padding="12px"
-            onClick={() => {}}
+            type="submit"
           >
             Próximo
           </Button>
