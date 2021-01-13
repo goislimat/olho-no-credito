@@ -26,6 +26,7 @@ interface TryFreeFields {
 
 interface ContextProps {
   addInfo: (props: TryFreeFields) => void;
+  getInfo: () => TryFreeFields | null;
 }
 
 const TryFreeContext = createContext<ContextProps | null>(null);
@@ -45,8 +46,12 @@ export function TryFreeContextProvider({ children }: Props) {
     });
   }
 
+  function getInfo(): TryFreeFields | null {
+    return tryFreeData;
+  }
+
   return (
-    <TryFreeContext.Provider value={{ addInfo }}>
+    <TryFreeContext.Provider value={{ addInfo, getInfo }}>
       {children}
     </TryFreeContext.Provider>
   );
