@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import styled from "styled-components";
 
-import tryFreeStep1Validation from "helpers/validations/tryFreeStep1";
+import tryFreeStep1Validation from "helpers/validations/tryFree";
 import { Button, Input } from "ui";
 import { useToast } from "ui/Toast";
 import PageTemplate from "../components/PageTemplate";

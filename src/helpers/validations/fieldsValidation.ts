@@ -14,3 +14,9 @@ export const addressExtrasValidation = Yup.string();
 export const neighborhoodValidation = Yup.string().required();
 export const cityValidation = Yup.string().required();
 export const stateValidation = Yup.string().required();
+export const fullNameValidation = Yup.string().required();
+export const cpfValidation = Yup.string().length(14).required();
+export const birthdayValidation = Yup.string().length(10).required();
+export const emailConfirmationValidation = Yup.string()
+  .oneOf([Yup.ref("email")])
+  .required();
