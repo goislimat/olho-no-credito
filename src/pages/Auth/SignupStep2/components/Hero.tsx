@@ -102,7 +102,6 @@ function Hero() {
     },
     validationSchema: signupStep2Validation,
     onSubmit: async function (values) {
-      // do something with those values
       try {
         // TODO: replace this mock timeout for the actual api request
         const res = await successApiRequest(values);
@@ -120,8 +119,6 @@ function Hero() {
       }
     },
   });
-
-  console.log(state);
 
   return (
     <MainHeroWithFigure removeImageOnMobile>

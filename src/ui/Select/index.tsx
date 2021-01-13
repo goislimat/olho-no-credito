@@ -40,7 +40,7 @@ function Select({ values, placeholder, label, ...props }: Props) {
       <SelectContainer>
         <CustomSelect {...props}>
           {placeholder && (
-            <option value="" selected disabled hidden>
+            <option value="" disabled hidden>
               {placeholder}
             </option>
           )}
