@@ -7,6 +7,7 @@ import { breakpoints, colors } from "ui/theme";
 const Container = styled.section`
   background: ${colors.greenGradient};
   padding: 50px 38px 114px;
+  position: relative;
 `;
 
 const ContentWithControls = styled.div`
@@ -79,6 +80,19 @@ const Subtitle = styled.p`
   }
 `;
 
+const Wave = styled.div`
+  display: none;
+
+  ${breakpoints.desktop} {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 100%;
+  }
+`;
+
 interface Props {
   sectionTitle: string;
   subtitle?: string;
@@ -87,43 +101,56 @@ interface Props {
 
 function PlansCarousel({ sectionTitle, subtitle, plans }: Props) {
   return (
-    <Container>
-      <Title>{sectionTitle}</Title>
+    <>
+      <Container>
+        <Wave>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 30">
+            <path
+              fill="#fff"
+              fill-opacity="1"
+              strokeWidth="0"
+              d="M0,0 C480,30 960,30 1440,0 Z"
+            ></path>
+          </svg>
+        </Wave>
 
-      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+        <Title>{sectionTitle}</Title>
 
-      <ContentWithControls>
-        <Control>
-          <Button
-            onClick={() => {}}
-            rounded
-            background="white"
-            padding="20px"
-            withShadow
-          >
-            <Icon name="leftArrow" />
-          </Button>
-        </Control>
+        {subtitle && <Subtitle>{subtitle}</Subtitle>}
 
-        <CardsContainer>
-          {plans.map(function (plan) {
-            return <PlanCard plan={plan} key={plan.numberOfQueries} />;
-          })}
-        </CardsContainer>
+        <ContentWithControls>
+          <Control>
+            <Button
+              onClick={() => {}}
+              rounded
+              background="white"
+              padding="20px"
+              withShadow
+            >
+              <Icon name="leftArrow" />
+            </Button>
+          </Control>
 
-        <Control>
-          <RightButton
-            onClick={() => {}}
-            rounded
-            background="white"
-            padding="20px"
-            withShadow
-          >
-            <Icon name="leftArrow" />
-          </RightButton>
-        </Control>
-      </ContentWithControls>
-    </Container>
+          <CardsContainer>
+            {plans.map(function (plan) {
+              return <PlanCard plan={plan} key={plan.numberOfQueries} />;
+            })}
+          </CardsContainer>
+
+          <Control>
+            <RightButton
+              onClick={() => {}}
+              rounded
+              background="white"
+              padding="20px"
+              withShadow
+            >
+              <Icon name="leftArrow" />
+            </RightButton>
+          </Control>
+        </ContentWithControls>
+      </Container>
+    </>
   );
 }
 
