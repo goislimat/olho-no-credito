@@ -13,6 +13,9 @@ const Card = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  margin: 16px;
+  box-sizing: border-box;
 `;
 
 const Header = styled.header`
@@ -134,8 +137,7 @@ function PlanCard({
 
       <Content>
         <QueryPrice>
-          Apenas <em>{asMoney(valuePerQueryCents)}</em> por consulta{" "}
-          {featured && "completa PF"}
+          Apenas <em>{asMoney(valuePerQueryCents)}</em> por consulta
         </QueryPrice>
 
         <PriceContainer>

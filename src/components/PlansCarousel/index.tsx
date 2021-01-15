@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
 
 import PlanCardType from "types/PlanCard";
 import { PlanCard, Icon, Button } from "ui";
@@ -10,7 +18,7 @@ const Container = styled.section`
   position: relative;
 `;
 
-const ContentWithControls = styled.div`
+const ContentWithControls = styled(CarouselProvider)`
   ${breakpoints.desktop} {
     display: grid;
     grid-auto-flow: column;
@@ -29,20 +37,21 @@ const Control = styled.div`
   }
 `;
 
-const RightButton = styled(Button)`
-  svg {
-    transform: rotate(180deg);
+const CardsContainer = styled(Slider)`
+  display: none;
+
+  ${breakpoints.desktop} {
+    display: block;
   }
 `;
 
-const CardsContainer = styled.div`
+const MobileContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
   row-gap: 82px;
 
   ${breakpoints.desktop} {
-    grid-auto-flow: column;
-    column-gap: 55px;
+    display: none;
   }
 `;
 
@@ -93,6 +102,30 @@ const Wave = styled.div`
   }
 `;
 
+const controlButton = css`
+  height: 57px;
+  width: 57px;
+  background: linear-gradient(222.92deg, #ffffff 8.95%, #edf0ed 82.38%);
+  box-shadow: 6px 6px 15px rgba(7, 25, 110, 0.24);
+  border-radius: 50%;
+  border: 0;
+  display: grid;
+  place-content: center center;
+  outline: 0;
+`;
+
+const PrevButton = styled(ButtonBack)`
+  ${controlButton}
+`;
+
+const NextButton = styled(ButtonNext)`
+  ${controlButton}
+
+  svg {
+    transform: rotate(180deg);
+  }
+`;
+
 interface Props {
   sectionTitle: string;
   subtitle?: string;
@@ -118,35 +151,39 @@ function PlansCarousel({ sectionTitle, subtitle, plans }: Props) {
 
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
 
-        <ContentWithControls>
+        <MobileContainer>
+          {plans.map(function (plan) {
+            return <PlanCard plan={plan} key={plan.numberOfQueries} />;
+          })}
+        </MobileContainer>
+
+        <ContentWithControls
+          naturalSlideHeight={0}
+          naturalSlideWidth={0}
+          totalSlides={4}
+          visibleSlides={3}
+          isIntrinsicHeight
+        >
           <Control>
-            <Button
-              onClick={() => {}}
-              rounded
-              background="white"
-              padding="20px"
-              withShadow
-            >
+            <PrevButton>
               <Icon name="leftArrow" />
-            </Button>
+            </PrevButton>
           </Control>
 
           <CardsContainer>
-            {plans.map(function (plan) {
-              return <PlanCard plan={plan} key={plan.numberOfQueries} />;
+            {plans.map(function (plan, index) {
+              return (
+                <Slide key={plan.monthlyPaymentCents} index={index}>
+                  <PlanCard plan={plan} key={plan.numberOfQueries} />
+                </Slide>
+              );
             })}
           </CardsContainer>
 
           <Control>
-            <RightButton
-              onClick={() => {}}
-              rounded
-              background="white"
-              padding="20px"
-              withShadow
-            >
+            <NextButton>
               <Icon name="leftArrow" />
-            </RightButton>
+            </NextButton>
           </Control>
         </ContentWithControls>
       </Container>

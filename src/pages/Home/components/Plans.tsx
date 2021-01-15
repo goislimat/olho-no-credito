@@ -19,6 +19,11 @@ const PLANS: PlanCardType[] = [
     valuePerQueryCents: 187,
     monthlyPaymentCents: 14990,
   },
+  {
+    numberOfQueries: 120,
+    valuePerQueryCents: 122,
+    monthlyPaymentCents: 18990,
+  },
 ];
 
 function Plans() {
