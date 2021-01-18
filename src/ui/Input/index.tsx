@@ -6,8 +6,14 @@ import icons from "ui/Icon/icons";
 import { colors } from "ui/theme";
 import masks from "./masks";
 
-const InputContainer = styled.div<{ hasError: boolean; isWhite?: boolean }>`
-  ${({ hasError, isWhite }) => css`
+interface InputContainerProps {
+  hasError: boolean;
+  isWhite?: boolean;
+  whiteBG?: boolean;
+}
+
+const InputContainer = styled.div<InputContainerProps>`
+  ${({ hasError, isWhite, whiteBG }) => css`
     border: 0.5px solid ${isWhite ? colors.white : colors.gray};
     border-radius: 6px;
     display: flex;
@@ -20,6 +26,11 @@ const InputContainer = styled.div<{ hasError: boolean; isWhite?: boolean }>`
       svg path {
         fill: #ff0120;
       }
+    `}
+
+    ${whiteBG &&
+    css`
+      background-color: white;
     `}
   `}
 `;
@@ -49,6 +60,7 @@ interface FormProps {
   mask?: keyof typeof masks;
   hasError: boolean;
   isWhite?: boolean;
+  whiteBG?: boolean;
   [propName: string]: any;
 }
 
@@ -59,11 +71,12 @@ function Input({
   mask,
   hasError,
   isWhite,
+  whiteBG,
   ...props
 }: FormProps) {
   function renderInput() {
     return (
-      <InputContainer hasError={hasError} isWhite={isWhite}>
+      <InputContainer hasError={hasError} isWhite={isWhite} whiteBG={whiteBG}>
         <CustomInput
           mask={mask ? masks[mask](props.value) : ""}
           maskPlaceholder={null}

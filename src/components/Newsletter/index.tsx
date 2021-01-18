@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import { successApiRequest } from "mocks/apiRequests";
 import styled from "styled-components";
 
+import newsletterValidation from "helpers/validations/newsletter";
 import { Button, Input } from "ui";
 import { breakpoints, colors, typography } from "ui/theme";
 import { useToast } from "ui/Toast";
@@ -48,11 +49,19 @@ const InputsContainer = styled.div`
 function Newsletter() {
   const toast = useToast();
 
-  const formik = useFormik({
+  const {
+    handleSubmit,
+    handleChange,
+    values: { fullName, email },
+    errors,
+    isSubmitting,
+    isValid,
+  } = useFormik({
     initialValues: {
       fullName: "",
       email: "",
     },
+    validationSchema: newsletterValidation,
     onSubmit: async function (values) {
       try {
         // TODO: call the api for sign newsletter
@@ -77,28 +86,33 @@ function Newsletter() {
         mercado
       </Description>
 
-      <FormContainer onSubmit={formik.handleSubmit}>
+      <FormContainer onSubmit={handleSubmit}>
         <InputsContainer>
           <Input
             id="fullName"
             name="fullName"
             placeholder="Nome completo"
             type="text"
-            value={formik.values.fullName}
-            onChange={formik.handleChange}
-            hasError={!!formik.errors.fullName}
+            value={fullName}
+            onChange={handleChange}
+            hasError={!!errors.fullName}
           />
           <Input
             id="email"
             name="email"
             placeholder="Email"
             type="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            hasError={!!formik.errors.email}
+            value={email}
+            onChange={handleChange}
+            hasError={!!errors.email}
           />
         </InputsContainer>
-        <Button type="submit" background="blueGradient">
+
+        <Button
+          type="submit"
+          background="blueGradient"
+          disabled={!isSubmitting || !isValid}
+        >
           Assinar Newsletter
         </Button>
       </FormContainer>
