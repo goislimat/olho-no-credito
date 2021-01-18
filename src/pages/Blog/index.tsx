@@ -9,14 +9,14 @@ import {
 
 function Blog() {
   return (
-    <div>
+    <>
       <Title />
       <PinnedPost />
       <SearchBar />
       <Categories />
       <Posts />
       <Pagination />
-    </div>
+    </>
   );
 }
 
