@@ -1,5 +1,7 @@
+import BlogPageComponent from "pages/Blog";
+
 function Blog() {
-  return <div>Blog</div>;
+  return <BlogPageComponent />;
 }
 
 export default Blog;
