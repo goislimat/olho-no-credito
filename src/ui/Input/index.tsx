@@ -37,6 +37,7 @@ const InputContainer = styled.div<InputContainerProps>`
     ${round &&
     css`
       border-radius: 75px;
+      padding: 16px 40px;
     `}
   `}
 `;
