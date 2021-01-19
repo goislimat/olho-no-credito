@@ -23,6 +23,28 @@ const SearchContainer = styled.div`
   width: 410px;
 `;
 
+const POSTS = [];
+
+const PINNED_POST = {};
+
+const CATEGORIES = [
+  {
+    image: "/static_assets/images/categories.jpg",
+    link: "#",
+    title: "Conheça tudo sobre as consultas PJ",
+  },
+  {
+    image: "/static_assets/images/categories.jpg",
+    link: "#",
+    title: "Conheça tudo sobre as consultas PF",
+  },
+  {
+    image: "/static_assets/images/categories.jpg",
+    link: "#",
+    title: "Conheça tudo sobre a recuperação de dívidas",
+  },
+];
+
 function Blog() {
   return (
     <Content>
@@ -31,7 +53,7 @@ function Blog() {
         <PinnedPost />
         <SearchContainer>
           <SearchBar />
-          <Categories />
+          <Categories categories={CATEGORIES} />
         </SearchContainer>
       </PinnedContent>
       <Posts />
