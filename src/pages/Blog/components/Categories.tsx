@@ -6,17 +6,52 @@ const Content = styled.section`
   grid-area: categories;
 `;
 
-const Title = styled.h3``;
+const Title = styled.h3`
+  font-family: ${typography.inter};
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27px;
+  letter-spacing: -0.5px;
+  color: #30c43e;
+  margin-bottom: 24px;
+`;
 
-const CategoriesList = styled.ul``;
+const CategoriesList = styled.ul`
+  list-style-type: none;
+  display: grid;
+  row-gap: 16px;
+`;
 
-const CategoryItem = styled.li``;
+const CategoryItem = styled.li`
+  display: grid;
+  grid-template-columns: 158px 1fr;
+  column-gap: 24px;
 
-const StyledImage = styled(Image)``;
+  > div {
+    margin: 16px 0;
+  }
+`;
 
-const CategoryTitle = styled.h4``;
+const StyledImage = styled(Image)`
+  border-radius: 6px;
+`;
 
-const ReadMore = styled.span``;
+const CategoryTitle = styled.h4`
+  font-family: ${typography.roboto};
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #686868;
+  margin-bottom: 8px;
+`;
+
+const ReadMore = styled.span`
+  font-family: ${typography.inter};
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #2721f3;
+`;
 
 // const Content = styled.section`
 //   margin-top: 24px;
