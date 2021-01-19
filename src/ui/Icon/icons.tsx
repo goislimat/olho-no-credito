@@ -643,4 +643,30 @@ export default {
       </svg>
     );
   },
+  clock: function () {
+    return (
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5.71429 10.2572C8.31791 10.2572 10.4286 8.14653 10.4286 5.5429C10.4286 2.93927 8.31791 0.828613 5.71429 0.828613C3.11066 0.828613 1 2.93927 1 5.5429C1 8.14653 3.11066 10.2572 5.71429 10.2572Z"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M5.71484 2.71436V5.54293L7.60056 6.48578"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    );
+  },
 };
