@@ -10,10 +10,11 @@ interface InputContainerProps {
   hasError: boolean;
   isWhite?: boolean;
   whiteBG?: boolean;
+  round?: boolean;
 }
 
 const InputContainer = styled.div<InputContainerProps>`
-  ${({ hasError, isWhite, whiteBG }) => css`
+  ${({ hasError, isWhite, whiteBG, round }) => css`
     border: 0.5px solid ${isWhite ? colors.white : colors.gray};
     border-radius: 6px;
     display: flex;
@@ -31,6 +32,11 @@ const InputContainer = styled.div<InputContainerProps>`
     ${whiteBG &&
     css`
       background-color: white;
+    `}
+
+    ${round &&
+    css`
+      border-radius: 75px;
     `}
   `}
 `;
@@ -61,6 +67,7 @@ interface FormProps {
   hasError: boolean;
   isWhite?: boolean;
   whiteBG?: boolean;
+  round?: boolean;
   [propName: string]: any;
 }
 
@@ -72,11 +79,17 @@ function Input({
   hasError,
   isWhite,
   whiteBG,
+  round,
   ...props
 }: FormProps) {
   function renderInput() {
     return (
-      <InputContainer hasError={hasError} isWhite={isWhite} whiteBG={whiteBG}>
+      <InputContainer
+        hasError={hasError}
+        isWhite={isWhite}
+        whiteBG={whiteBG}
+        round={round}
+      >
         <CustomInput
           mask={mask ? masks[mask](props.value) : ""}
           maskPlaceholder={null}

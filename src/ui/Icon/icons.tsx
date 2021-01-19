@@ -669,4 +669,32 @@ export default {
       </svg>
     );
   },
+  search: function () {
+    return (
+      <svg
+        width="19"
+        height="20"
+        viewBox="0 0 19 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="11.4508"
+          cy="7.65"
+          r="6.65"
+          stroke="#828FA9"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M6.7 13.3501L1 19.0501"
+          stroke="#828FA9"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    );
+  },
 };
