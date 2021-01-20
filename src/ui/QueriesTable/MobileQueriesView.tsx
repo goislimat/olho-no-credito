@@ -22,7 +22,10 @@ const CardRow = styled.div`
   grid-template-columns: 2fr 3fr;
   height: 60px;
   padding: 0 20px;
-  border-bottom: 1px solid #f2f2f2;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #f2f2f2;
+  }
 `;
 
 const RowTitle = styled.span`

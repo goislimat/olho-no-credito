@@ -5,7 +5,7 @@ import { breakpoints, colors, typography } from "ui/theme";
 const Card = styled.div`
   grid-area: card;
   background: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 3px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   padding-bottom: 20px;
 `;
