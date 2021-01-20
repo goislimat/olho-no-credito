@@ -1,7 +1,12 @@
 import styled from "styled-components";
-import { typography } from "ui/theme";
+import { breakpoints, typography } from "ui/theme";
 
-const Content = styled.div``;
+const Content = styled.div`
+  ${breakpoints.desktop} {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+`;
 
 const PageTitle = styled.h1`
   font-family: ${typography.inter};
@@ -12,40 +17,29 @@ const PageTitle = styled.h1`
   text-align: center;
   color: #696969;
   margin-bottom: 24px;
+
+  ${breakpoints.desktop} {
+    font-size: 35px;
+    line-height: 42px;
+  }
 `;
 
 const Subtitle = styled.h2`
+  font-family: ${typography.roboto};
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 18px;
   text-align: center;
   color: #94a2b3;
   padding: 0 24px;
   margin-bottom: 32px;
+
+  ${breakpoints.desktop} {
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 48px;
+  }
 `;
-
-// const Content = styled.div`
-//   max-width: 598px;
-//   margin: 40px auto 32px;
-// `;
-
-// const PageTitle = styled.h1`
-//   font-family: ${typography.inter};
-//   font-size: 35px;
-//   font-weight: 600;
-//   line-height: 42px;
-//   text-align: center;
-//   color: #696969;
-// `;
-
-// const Subtitle = styled.h2`
-//   font-size: 18px;
-//   font-weight: 400;
-//   line-height: 25px;
-//   text-align: center;
-//   color: #94a2b3;
-//   margin-top: 32px;
-// `;
 
 function Title() {
   return (

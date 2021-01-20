@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import { Input } from "ui";
+import { breakpoints } from "ui/theme";
 
 const Content = styled.div`
   grid-area: search;
   padding: 0 24px;
+
+  ${breakpoints.desktop} {
+    padding: 0;
+  }
 `;
 
 function SearchBar() {

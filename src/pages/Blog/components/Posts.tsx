@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { typography } from "ui/theme";
+import { breakpoints, typography } from "ui/theme";
 
 const Content = styled.section`
   padding: 56px 0;
@@ -20,6 +20,11 @@ const PostsList = styled.ul`
   list-style-type: none;
   display: grid;
   row-gap: 40px;
+
+  ${breakpoints.desktop} {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px 20px;
+  }
 `;
 
 const PostItem = styled.li``;
@@ -43,50 +48,6 @@ const PostSubtitle = styled.p`
   line-height: 17px;
   color: #94a2b3;
 `;
-
-// const Content = styled.section`
-//   padding: 40px 0;
-// `;
-
-// const Title = styled.h3`
-//   font-family: ${typography.inter};
-//   font-size: 30px;
-//   font-weight: 600;
-//   line-height: 36px;
-//   color: #686868;
-//   margin-bottom: 40px;
-// `;
-
-// const PostsList = styled.ul`
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr;
-//   gap: 40px 20px;
-//   padding: 0;
-//   margin: 0;
-//   list-style-type: none;
-// `;
-
-// const PostItem = styled.li``;
-
-// const PostImage = styled(Image)`
-//   border-radius: 6px;
-// `;
-
-// const PostTitle = styled.h4`
-//   font-family: ${typography.inter};
-//   font-size: 25px;
-//   font-weight: 600;
-//   line-height: 30px;
-//   letter-spacing: 0.02em;
-//   margin: 16px 0;
-//   color: #777777;
-// `;
-
-// const PostSubtitle = styled.p`
-//   font-size: 18px;
-//   line-height: 25px;
-//   color: #94a2b3;
-// `;
 
 interface Props {
   posts: {

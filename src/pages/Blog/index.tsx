@@ -1,6 +1,7 @@
 import { FooterWithoutForm } from "sharedSections";
 import styled from "styled-components";
 import { Navbar } from "ui";
+import { breakpoints } from "ui/theme";
 import {
   Categories,
   Pagination,
@@ -12,6 +13,11 @@ import {
 
 const Content = styled.div`
   padding: 60px 20px;
+
+  ${breakpoints.desktop} {
+    max-width: 1212px;
+    margin: 0 auto;
+  }
 `;
 
 const PinnedContent = styled.section`
@@ -21,22 +27,15 @@ const PinnedContent = styled.section`
     "post"
     "categories";
   row-gap: 32px;
+
+  ${breakpoints.desktop} {
+    grid-template-columns: 1fr 0.6fr;
+    grid-template-areas:
+      "post search"
+      "post categories";
+    column-gap: 80px;
+  }
 `;
-
-// const Content = styled.div`
-//   max-width: 1212px;
-//   margin: 0 auto;
-// `;
-
-// const PinnedContent = styled.section`
-//   display: inline-grid;
-//   grid-auto-flow: column;
-//   column-gap: 80px;
-// `;
-
-// const SearchContainer = styled.div`
-//   width: 410px;
-// `;
 
 const POSTS = [
   {

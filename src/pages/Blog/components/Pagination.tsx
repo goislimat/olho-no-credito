@@ -1,10 +1,16 @@
 import styled, { css } from "styled-components";
 import { Icon } from "ui";
+import { breakpoints } from "ui/theme";
 
 const Content = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
   align-items: center;
+
+  ${breakpoints.desktop} {
+    max-width: 400px;
+    margin: 0 auto;
+  }
 `;
 
 const PageList = styled.ul`
@@ -23,13 +29,22 @@ const QuickNavLink = styled.a<QuickNavLinkProps>`
     console.log(disabled);
     return css`
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      color: #4f5f82;
+
+      svg {
+        margin: 0 12px 0 0;
+      }
 
       ${type === "next" &&
       css`
-        text-align: right;
+        justify-content: flex-end;
+        color: #4361ee;
 
         svg {
           transform: rotate(180deg);
+          margin: 0 0 0 12px;
         }
       `}
 
@@ -41,6 +56,14 @@ const QuickNavLink = styled.a<QuickNavLinkProps>`
       `}
     `;
   }}
+`;
+
+const Label = styled.span`
+  display: none;
+
+  ${breakpoints.desktop} {
+    display: inline-block;
+  }
 `;
 
 const PageIndex = styled.a<{ active?: boolean }>`
@@ -66,7 +89,7 @@ function Pagination() {
   return (
     <Content>
       <QuickNavLink href="#" type="previous" disabled>
-        <Icon name="leftArrow" />
+        <Icon name="leftArrow" /> <Label>Anterior</Label>
       </QuickNavLink>
       <PageList>
         <li>
@@ -88,7 +111,7 @@ function Pagination() {
         </li>
       </PageList>
       <QuickNavLink href="#" type="next">
-        <Icon name="leftArrow" />
+        <Label>Próximo</Label> <Icon name="leftArrow" />
       </QuickNavLink>
     </Content>
   );
