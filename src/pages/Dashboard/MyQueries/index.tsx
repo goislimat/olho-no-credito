@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ActivePlanCard } from "ui";
+import { ActivePlanCard, QueriesTable } from "ui";
 import { breakpoints } from "ui/theme";
 
 const Content = styled.div`
@@ -21,9 +21,43 @@ const QueriesInfo = styled.div`
   }
 `;
 
-const TempQueries = styled.div`
-  grid-area: queries;
-`;
+const QUERIES = [
+  {
+    contractNumber: "ONC - C2020-01895",
+    contractDate: "23/04/2020",
+    dueDateDay: 23,
+    nextCicleDate: "23/05/2020",
+    detailsLink: "#",
+  },
+  {
+    contractNumber: "ONC - C2020-01895",
+    contractDate: "25/04/2020",
+    dueDateDay: 25,
+    nextCicleDate: "25/05/2020",
+    detailsLink: "#",
+  },
+  {
+    contractNumber: "ONC - C2020-01895",
+    contractDate: "26/04/2020",
+    dueDateDay: 26,
+    nextCicleDate: "26/05/2020",
+    detailsLink: "#",
+  },
+  {
+    contractNumber: "ONC - C2020-01895",
+    contractDate: "27/04/2020",
+    dueDateDay: 27,
+    nextCicleDate: "27/05/2020",
+    detailsLink: "#",
+  },
+  {
+    contractNumber: "ONC - C2020-01895",
+    contractDate: "28/04/2020",
+    dueDateDay: 28,
+    nextCicleDate: "28/05/2020",
+    detailsLink: "#",
+  },
+];
 
 function MyQueries() {
   return (
@@ -31,7 +65,7 @@ function MyQueries() {
       <div>Navbar</div>
       <QueriesInfo>
         <ActivePlanCard />
-        <TempQueries>My queries</TempQueries>
+        <QueriesTable queries={QUERIES} />
       </QueriesInfo>
       <div>Newsletter</div>
       <div>FAQ</div>

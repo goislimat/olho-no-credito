@@ -9,6 +9,7 @@ export { default as Navbar } from "ui/Navbar";
 export { default as OlhoNoCreditoLogo } from "./OlhoNoCreditoLogo";
 export { default as OrderedList } from "ui/OrderedList";
 export { default as PlanCard } from "ui/PlanCard";
+export { default as QueriesTable } from "./QueriesTable";
 export { default as QuodLogo } from "./QuodLogo";
 export { default as Select } from "./Select";
 export { default as StepCounter } from "./StepCounter";
