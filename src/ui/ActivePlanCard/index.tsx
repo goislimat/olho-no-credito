@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Button, QuodLogo } from "ui";
-import { breakpoints, typography } from "ui/theme";
+import { QuodLogo } from "ui";
+import { breakpoints, colors, typography } from "ui/theme";
 
 const Card = styled.div`
   grid-area: card;
@@ -80,9 +80,16 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const RoundBorderButton = styled(Button)`
+const RoundBorderButton = styled.button`
   border-radius: 40px;
   padding: 12px 40px;
+  background: ${colors.greenGradient};
+  border: 0;
+  outline: 0;
+  font-family: ${typography.inter};
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
 
   ${breakpoints.desktop} {
     width: 100%;
@@ -113,9 +120,7 @@ function ActivePlanCard() {
         </Price>
       </Body>
       <ButtonContainer>
-        <RoundBorderButton background="greenGradient">
-          Alterar plano
-        </RoundBorderButton>
+        <RoundBorderButton>Alterar plano</RoundBorderButton>
       </ButtonContainer>
       <LogoContainer>
         <QuodLogo />
@@ -125,3 +130,6 @@ function ActivePlanCard() {
 }
 
 export default ActivePlanCard;
+// export default function () {
+//   return <div>opa</div>;
+// }
