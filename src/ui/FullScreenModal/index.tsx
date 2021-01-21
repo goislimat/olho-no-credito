@@ -1,5 +1,8 @@
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { typography } from "ui/theme";
+import { Icon } from "ui";
+import { breakpoints, typography } from "ui/theme";
 
 const Overlay = styled.div<{ isOpen: boolean }>`
   ${({ isOpen }) => css`
@@ -30,14 +33,46 @@ const Overlay = styled.div<{ isOpen: boolean }>`
 `;
 
 const ModalContent = styled.div`
-  background: linear-gradient(
-    139.78deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.79) 101.92%
-  );
-  border-radius: 24px;
-  padding: 60px 24px;
-  max-width: 390px;
+  background: #f1f1f1;
+  width: 100vw;
+  height: 100vh;
+
+  ${breakpoints.desktop} {
+    background: linear-gradient(
+      139.78deg,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.79) 101.92%
+    );
+    border-radius: 24px;
+    padding: 60px 24px;
+    max-width: 390px;
+    height: auto;
+  }
+`;
+
+const NavHeader = styled.div`
+  background: white;
+  height: 86px;
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: auto 1fr auto;
+  padding: 16px 24px;
+  align-items: center;
+
+  button {
+    z-index: 10;
+    background: transparent;
+    border: 0;
+    outline: 0;
+  }
+
+  svg path {
+    fill: #30c43e;
+  }
+
+  ${breakpoints.desktop} {
+    display: none;
+  }
 `;
 
 const Title = styled.p`
@@ -47,7 +82,11 @@ const Title = styled.p`
   line-height: 30px;
   text-align: center;
   color: #686868;
-  margin-bottom: 40px;
+  margin: 80px 40px 40px;
+
+  ${breakpoints.desktop} {
+    margin: 0 0 40px;
+  }
 `;
 
 const Text = styled.p`
@@ -57,13 +96,21 @@ const Text = styled.p`
   line-height: 25px;
   text-align: center;
   color: #686868;
-  margin-bottom: 24px;
+  margin: 0 40px 24px;
+
+  ${breakpoints.desktop} {
+    margin: 0 0 24px;
+  }
 `;
 
 const ActionsContainer = styled.div`
   display: grid;
   row-gap: 24px;
-  margin-top: 48px;
+  margin: 48px 40px 0;
+
+  ${breakpoints.desktop} {
+    margin: 48px 0 0;
+  }
 `;
 
 interface ButtonProps {
@@ -115,10 +162,32 @@ interface Props {
 }
 
 function FullScreenModal({ isOpen, close }: Props) {
+  useEffect(() => {
+    if (isOpen) {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
   return (
-    <Overlay role="button" onClick={close} isOpen={isOpen}>
+    <Overlay isOpen={isOpen} onClick={close}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
+        <NavHeader>
+          <button onClick={close}>
+            <Icon name="leftArrow" />
+          </button>
+          <Image
+            src="/static_assets/images/olho-no-credito-logo.svg"
+            alt="logo da olho no crédito"
+            width="94"
+            height="54"
+          />
+        </NavHeader>
+
         <Title>Olá! Tem certeza que deseja cancelar esse contrato?</Title>
+
         <Text>
           A partir do momento do cancelamento, você não poderá fazer mais
           consultas.
@@ -128,8 +197,12 @@ function FullScreenModal({ isOpen, close }: Props) {
           para tratar do assunto!
         </Text>
         <ActionsContainer>
-          <Button color="green">Receber uma ligação</Button>
-          <Button color="red">Cancelar</Button>
+          <Button color="green" onClick={() => console.log("receive a call")}>
+            Receber uma ligação
+          </Button>
+          <Button color="red" onClick={() => console.log("cancel contract")}>
+            Cancelar
+          </Button>
         </ActionsContainer>
       </ModalContent>
     </Overlay>
