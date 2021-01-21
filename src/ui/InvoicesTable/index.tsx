@@ -13,7 +13,7 @@ function InvoicesTable() {
           {
             createdAt: "22/05/2020",
             closedAt: "22/05/2020",
-            priceInCents: "100",
+            priceInCents: 100,
             status: "Aberto",
             paymentLink: "#",
             invoiceLink: "#",
