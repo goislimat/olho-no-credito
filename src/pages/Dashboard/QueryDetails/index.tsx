@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { breakpoints } from "ui/theme";
 import { ActivePlanCard, FullScreenModal } from "ui";
 import QueryDetailsTable from "ui/QueryDetailsTable";
+import { CancelModal } from "./components";
 
 const Content = styled.div`
   padding: 0 20px;
@@ -70,7 +71,7 @@ function QueryDetails() {
         <div>Products</div>
         <div>Footer</div>
       </Content>
-      <FullScreenModal isOpen={isCancelModalOpen} close={closeCancelModal} />
+      <CancelModal isOpen={isCancelModalOpen} close={closeCancelModal} />
     </>
   );
 }
