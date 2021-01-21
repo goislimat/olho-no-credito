@@ -2,6 +2,7 @@ export { default as ActivePlanCard } from "ui/ActivePlanCard";
 export { default as Button } from "ui/Button";
 export { default as ButtonGroup } from "ui/ButtonGroup";
 export { default as DescriptiveIcon } from "ui/DescriptiveIcon";
+export { default as FullScreenModal } from "ui/FullScreenModal";
 export { default as Icon } from "ui/Icon";
 export { default as Input } from "ui/Input";
 export { default as Label } from "ui/Label";

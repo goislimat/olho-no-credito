@@ -117,7 +117,11 @@ const Button = styled.button<ButtonProps>`
   `}
 `;
 
-function DesktopQueryDetailsView() {
+interface Props {
+  openCancelModal: () => void;
+}
+
+function DesktopQueryDetailsView({ openCancelModal }: Props) {
   return (
     <Content>
       <DetailsContainer>
@@ -145,7 +149,9 @@ function DesktopQueryDetailsView() {
 
       <ControlsContainer>
         <Button color="green">Ver contrato</Button>
-        <Button color="red">Cancelar contrato</Button>
+        <Button color="red" onClick={openCancelModal}>
+          Cancelar contrato
+        </Button>
         <Button color="blue">Condições comerciais</Button>
         <Button color="purple">Downloads de dados</Button>
       </ControlsContainer>

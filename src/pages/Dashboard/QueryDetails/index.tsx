@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { breakpoints } from "ui/theme";
-import { ActivePlanCard } from "ui";
+import { ActivePlanCard, FullScreenModal } from "ui";
 import QueryDetailsTable from "ui/QueryDetailsTable";
 
 const Content = styled.div`
@@ -36,6 +36,11 @@ function QueryDetails() {
 
   const [activeQuery, setActiveQuery] = useState<ActiveQueryProps | null>(null);
 
+  const [isCancelModalOpen, setCancelModalState] = useState<boolean>(false);
+
+  const openCancelModal = () => setCancelModalState(true);
+  const closeCancelModal = () => setCancelModalState(false);
+
   useEffect(() => {
     if (query.qid) {
       // TODO: fetch the query based on its id from the backend
@@ -51,16 +56,19 @@ function QueryDetails() {
   if (!activeQuery) return <div>Loading...</div>;
 
   return (
-    <Content>
-      <div>Navbar</div>
-      <QueriesInfo>
-        <ActivePlanCard />
-        <QueryDetailsTable />
-      </QueriesInfo>
-      <div>Newsletter</div>
-      <div>Products</div>
-      <div>Footer</div>
-    </Content>
+    <>
+      <Content>
+        <div>Navbar</div>
+        <QueriesInfo>
+          <ActivePlanCard />
+          <QueryDetailsTable openCancelModal={openCancelModal} />
+        </QueriesInfo>
+        <div>Newsletter</div>
+        <div>Products</div>
+        <div>Footer</div>
+      </Content>
+      <FullScreenModal isOpen={isCancelModalOpen} close={closeCancelModal} />
+    </>
   );
 }
 

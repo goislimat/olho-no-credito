@@ -11,11 +11,15 @@ const Content = styled.div`
   }
 `;
 
-function QueryDetailsTable() {
+interface Props {
+  openCancelModal: () => void;
+}
+
+function QueryDetailsTable({ openCancelModal }: Props) {
   return (
     <Content>
-      <MobileQueryDetailsView />
-      <DesktopQueryDetailsView />
+      <MobileQueryDetailsView openCancelModal={openCancelModal} />
+      <DesktopQueryDetailsView openCancelModal={openCancelModal} />
     </Content>
   );
 }
