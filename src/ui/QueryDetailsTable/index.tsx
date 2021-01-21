@@ -12,14 +12,25 @@ const Content = styled.div`
 `;
 
 interface Props {
+  queryDetails: {
+    productName: string;
+    numberOfQueries: number;
+    usedQueriesCount: number;
+  };
   openCancelModal: () => void;
 }
 
-function QueryDetailsTable({ openCancelModal }: Props) {
+function QueryDetailsTable({ queryDetails, openCancelModal }: Props) {
   return (
     <Content>
-      <MobileQueryDetailsView openCancelModal={openCancelModal} />
-      <DesktopQueryDetailsView openCancelModal={openCancelModal} />
+      <MobileQueryDetailsView
+        queryDetails={queryDetails}
+        openCancelModal={openCancelModal}
+      />
+      <DesktopQueryDetailsView
+        queryDetails={queryDetails}
+        openCancelModal={openCancelModal}
+      />
     </Content>
   );
 }

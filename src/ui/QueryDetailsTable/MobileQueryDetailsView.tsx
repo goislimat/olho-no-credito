@@ -1,3 +1,4 @@
+import { formatWithZeros } from "helpers/numberFormat";
 import styled, { css } from "styled-components";
 import { breakpoints, typography } from "ui/theme";
 
@@ -124,29 +125,38 @@ const Button = styled.button<ButtonProps>`
 `;
 
 interface Props {
+  queryDetails: {
+    productName: string;
+    numberOfQueries: number;
+    usedQueriesCount: number;
+  };
   openCancelModal: () => void;
 }
 
-function MobileQueryDetailsView({ openCancelModal }: Props) {
+function MobileQueryDetailsView({ queryDetails, openCancelModal }: Props) {
+  const { productName, numberOfQueries, usedQueriesCount } = queryDetails;
+
   return (
     <Content>
       <DetailsContainer>
         <DetailsTag>Detalhes:</DetailsTag>
-        <QueryId>ONC - C2020-01895</QueryId>
+        <QueryId>{productName}</QueryId>
       </DetailsContainer>
 
       <Card>
         <CardRow>
           <RowLabel>Nome do produto</RowLabel>
-          <RowValue>ONC - C2020-01895</RowValue>
+          <RowValue>{productName}</RowValue>
         </CardRow>
         <CardRow>
           <RowLabel>Quantidade de consultas contratadas</RowLabel>
-          <RowValue>10 cons. no mês</RowValue>
+          <RowValue>{`${formatWithZeros(
+            numberOfQueries
+          )} cons. no mês`}</RowValue>
         </CardRow>
         <CardRow>
           <RowLabel>Quantidade de consultas consumidas</RowLabel>
-          <RowValue>05</RowValue>
+          <RowValue>{formatWithZeros(usedQueriesCount)}</RowValue>
         </CardRow>
 
         <ControlsContainer>

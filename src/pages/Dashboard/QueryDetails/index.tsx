@@ -61,7 +61,10 @@ function QueryDetails() {
         <div>Navbar</div>
         <QueriesInfo>
           <ActivePlanCard />
-          <QueryDetailsTable openCancelModal={openCancelModal} />
+          <QueryDetailsTable
+            queryDetails={activeQuery}
+            openCancelModal={openCancelModal}
+          />
         </QueriesInfo>
         <div>Newsletter</div>
         <div>Products</div>

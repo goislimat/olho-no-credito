@@ -7,3 +7,7 @@ export function asMoney(valueInCents: number, removeCurrency = false): string {
 
   return removeCurrency ? convertedValue.split("$")[1].trim() : convertedValue;
 }
+
+export function formatWithZeros(value: number, numberOfDigits = 2) {
+  return String(value).padStart(numberOfDigits, "0");
+}
