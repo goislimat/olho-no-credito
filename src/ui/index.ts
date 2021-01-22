@@ -14,3 +14,5 @@ export { default as QueriesTable } from "./QueriesTable";
 export { default as QuodLogo } from "./QuodLogo";
 export { default as Select } from "./Select";
 export { default as StepCounter } from "./StepCounter";
+export { default as MobileTable } from "./MobileTable";
+export { default as DesktopTable } from "./DesktopTable";

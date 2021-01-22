@@ -21,43 +21,78 @@ const QueriesInfo = styled.div`
   }
 `;
 
-const QUERIES = [
-  {
-    contractNumber: "ONC - C2020-01895",
-    contractDate: "23/04/2020",
-    dueDateDay: 23,
-    nextCicleDate: "23/05/2020",
-    detailsLink: "#",
-  },
-  {
-    contractNumber: "ONC - C2020-01895",
-    contractDate: "25/04/2020",
-    dueDateDay: 25,
-    nextCicleDate: "25/05/2020",
-    detailsLink: "#",
-  },
-  {
-    contractNumber: "ONC - C2020-01895",
-    contractDate: "26/04/2020",
-    dueDateDay: 26,
-    nextCicleDate: "26/05/2020",
-    detailsLink: "#",
-  },
-  {
-    contractNumber: "ONC - C2020-01895",
-    contractDate: "27/04/2020",
-    dueDateDay: 27,
-    nextCicleDate: "27/05/2020",
-    detailsLink: "#",
-  },
-  {
-    contractNumber: "ONC - C2020-01895",
-    contractDate: "28/04/2020",
-    dueDateDay: 28,
-    nextCicleDate: "28/05/2020",
-    detailsLink: "#",
-  },
-];
+const DATA = {
+  fields: [
+    {
+      name: "Nº do contrato",
+      type: "text",
+    },
+    {
+      name: "Data da contratação",
+      type: "text",
+    },
+    {
+      name: "Vencimento da fatura",
+      type: "text",
+    },
+    {
+      name: "Data do próximo ciclo",
+      type: "text",
+    },
+  ],
+  data: [
+    {
+      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
+      actions: [
+        {
+          name: "Ver detalhes",
+          type: "full-bottom-link",
+          action: "#",
+        },
+      ],
+    },
+    {
+      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
+      actions: [
+        {
+          name: "Ver detalhes",
+          type: "full-bottom-link",
+          action: "#",
+        },
+      ],
+    },
+    {
+      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
+      actions: [
+        {
+          name: "Ver detalhes",
+          type: "full-bottom-link",
+          action: "#",
+        },
+      ],
+    },
+    {
+      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
+      actions: [
+        {
+          name: "Ver detalhes",
+          type: "full-bottom-link",
+          action: "#",
+        },
+      ],
+    },
+    {
+      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
+      actions: [
+        {
+          name: "Ver detalhes",
+          type: "full-bottom-link",
+          action: "#",
+        },
+      ],
+    },
+  ],
+};
 
 function MyQueries() {
   return (
@@ -65,7 +100,7 @@ function MyQueries() {
       <div>Navbar</div>
       <QueriesInfo>
         <ActivePlanCard />
-        <QueriesTable queries={QUERIES} />
+        <QueriesTable queries={DATA} />
       </QueriesInfo>
       <div>Newsletter</div>
       <div>FAQ</div>
