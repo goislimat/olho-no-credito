@@ -1,5 +1,16 @@
 import styled from "styled-components";
-import { typography } from "ui/theme";
+import { breakpoints, typography } from "ui/theme";
+
+const Content = styled.div`
+  display: block;
+  display: grid;
+  row-gap: 40px;
+  margin: 56px 0;
+
+  ${breakpoints.desktop} {
+    display: none;
+  }
+`;
 
 const Card = styled.div`
   background: #ffffff;
@@ -51,44 +62,22 @@ const FullBottomLink = styled.a`
   text-decoration: none;
 `;
 
-interface ActionProps {
-  actions: {
-    name: string;
-    type: string;
-    action: any;
-  }[];
-}
-
-function Actions({ actions }: ActionProps) {
-  return (
-    <>
-      {actions.map(function (item) {
-        const { name, type, action } = item;
-
-        switch (type) {
-          case "full-bottom-link":
-            return <FullBottomLink href={action}>{name}</FullBottomLink>;
-          default:
-            return null;
-        }
-      })}
-    </>
-  );
-}
-
 interface Props {
   queries: {
     fields: {
-      name: string;
-      type: string;
+      name?: string;
+      type: "text" | "full-bottom-link";
+      mobile?: {
+        columnName?: string;
+        rowLabel: string;
+      };
+      desktop?: {
+        columnName: string;
+        rowLabel: string;
+      };
     }[];
     data: {
       values: string[];
-      actions?: {
-        name: string;
-        type: string;
-        action: any;
-      }[];
     }[];
   };
 }
@@ -97,29 +86,34 @@ function MobileTable({ queries }: Props) {
   const { fields, data } = queries;
 
   return (
-    <>
+    <Content>
       {data.map(function (stream, i) {
-        const { values, actions } = stream;
+        const { values } = stream;
 
         return (
           <Card>
             {values.map(function (data, index) {
-              const { name, type } = fields[index];
+              const { name, type, mobile } = fields[index];
+
+              if (type === "full-bottom-link") {
+                return (
+                  <FullBottomLink href={data}>
+                    {mobile?.rowLabel}
+                  </FullBottomLink>
+                );
+              }
 
               return (
                 <CardRow>
                   <CardLabel>{name}</CardLabel>
-                  {type === "text" && <CardValue>{data}</CardValue>}
-                  {type === "link" && <a href="#insert-link-here">{data}</a>}
+                  <CardValue>{data}</CardValue>
                 </CardRow>
               );
             })}
-
-            {actions && <Actions actions={actions} />}
           </Card>
         );
       })}
-    </>
+    </Content>
   );
 }
 

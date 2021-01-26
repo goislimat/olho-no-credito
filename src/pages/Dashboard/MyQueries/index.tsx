@@ -21,7 +21,25 @@ const QueriesInfo = styled.div`
   }
 `;
 
-const DATA = {
+interface Props {
+  fields: {
+    name?: string;
+    type: "text" | "full-bottom-link";
+    mobile?: {
+      columnName?: string;
+      rowLabel: string;
+    };
+    desktop?: {
+      columnName: string;
+      rowLabel: string;
+    };
+  }[];
+  data: {
+    values: string[];
+  }[];
+}
+
+const DATA: Props = {
   fields: [
     {
       name: "Nº do contrato",
@@ -39,56 +57,61 @@ const DATA = {
       name: "Data do próximo ciclo",
       type: "text",
     },
+    {
+      mobile: {
+        rowLabel: "Ver detalhes",
+      },
+      desktop: {
+        columnName: "Detalhes",
+        rowLabel: "Ver detalhes",
+      },
+      type: "full-bottom-link",
+    },
   ],
   data: [
     {
-      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
-      actions: [
-        {
-          name: "Ver detalhes",
-          type: "full-bottom-link",
-          action: "#",
-        },
+      values: [
+        "ONC - C20202 - 01895",
+        "23/04/2020",
+        "Dia 25",
+        "23/05/2020",
+        "#",
       ],
     },
     {
-      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
-      actions: [
-        {
-          name: "Ver detalhes",
-          type: "full-bottom-link",
-          action: "#",
-        },
+      values: [
+        "ONC - C20202 - 01895",
+        "23/04/2020",
+        "Dia 25",
+        "23/05/2020",
+        "#",
       ],
     },
     {
-      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
-      actions: [
-        {
-          name: "Ver detalhes",
-          type: "full-bottom-link",
-          action: "#",
-        },
+      values: [
+        "ONC - C20202 - 01895",
+        "23/04/2020",
+        "Dia 25",
+        "23/05/2020",
+        "#",
       ],
     },
     {
-      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
-      actions: [
-        {
-          name: "Ver detalhes",
-          type: "full-bottom-link",
-          action: "#",
-        },
+      values: [
+        "ONC - C20202 - 01895",
+        "23/04/2020",
+        "Dia 25",
+        "23/05/2020",
+        "#",
       ],
     },
     {
-      values: ["ONC - C20202 - 01895", "23/04/2020", "Dia 25", "23/05/2020"],
-      actions: [
-        {
-          name: "Ver detalhes",
-          type: "full-bottom-link",
-          action: "#",
-        },
+      values: [
+        "ONC - C20202 - 01895",
+        "23/04/2020",
+        "Dia 25",
+        "23/05/2020",
+        "#",
       ],
     },
   ],
