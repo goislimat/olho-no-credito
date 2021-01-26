@@ -1,4 +1,6 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
+import { v4 as uuid } from "uuid";
 import { breakpoints, typography } from "ui/theme";
 
 const Content = styled.div`
@@ -20,8 +22,10 @@ const Card = styled.div`
 
 const CardRow = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(40%, max-content);
+  column-gap: 8px;
   padding: 16px;
+  align-items: center;
 
   &:not(:last-of-type) {
     border: 1px solid #f2f2f2;
@@ -62,11 +66,23 @@ const FullBottomLink = styled.a`
   text-decoration: none;
 `;
 
+const CardLink = styled.a`
+  font-family: ${typography.roboto};
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: right;
+  color: #007ad2;
+  text-decoration: none;
+  text-transform: uppercase;
+`;
+
 interface Props {
   queries: {
     fields: {
       name?: string;
-      type: "text" | "full-bottom-link";
+      type: "text" | "full-bottom-link" | "link";
+      columnText?: string;
       mobile?: {
         columnName?: string;
         rowLabel: string;
@@ -80,9 +96,10 @@ interface Props {
       values: string[];
     }[];
   };
+  children?: ReactNode;
 }
 
-function MobileTable({ queries }: Props) {
+function MobileTable({ queries, children }: Props) {
   const { fields, data } = queries;
 
   return (
@@ -91,25 +108,33 @@ function MobileTable({ queries }: Props) {
         const { values } = stream;
 
         return (
-          <Card>
+          <Card key={uuid()}>
             {values.map(function (data, index) {
-              const { name, type, mobile } = fields[index];
+              const { name, type, mobile, columnText } = fields[index];
 
               if (type === "full-bottom-link") {
                 return (
-                  <FullBottomLink href={data}>
+                  <FullBottomLink href={data} key={uuid()}>
                     {mobile?.rowLabel}
                   </FullBottomLink>
                 );
               }
 
               return (
-                <CardRow>
+                <CardRow key={uuid()}>
                   <CardLabel>{name}</CardLabel>
-                  <CardValue>{data}</CardValue>
+                  <CardValue>
+                    {type === "link" ? (
+                      <CardLink href={data}>{columnText}</CardLink>
+                    ) : (
+                      data
+                    )}
+                  </CardValue>
                 </CardRow>
               );
             })}
+
+            {children}
           </Card>
         );
       })}

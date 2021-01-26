@@ -1,5 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { v4 as uuid } from "uuid";
 import { breakpoints, typography } from "ui/theme";
+import { ReactNode } from "react";
 
 const Content = styled.div`
   display: none;
@@ -19,33 +21,61 @@ const Table = styled.table`
   width: 100%;
 `;
 
-const ColumnHeader = styled.th`
-  background: linear-gradient(180deg, #1792f2 0%, #226df3 100%);
-  padding: 12px;
-  border-radius: 15px 15px 0 0;
-  border: 2px solid white;
+const ColumnHeader = styled.th<{ minimalist?: boolean }>`
+  ${({ minimalist }) => {
+    return css`
+      background: linear-gradient(180deg, #1792f2 0%, #226df3 100%);
+      padding: 12px;
+      border-radius: 15px 15px 0 0;
+      border: 2px solid white;
 
-  font-family: ${typography.inter};
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 17px;
-  color: white;
+      font-family: ${typography.inter};
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 17px;
+      color: white;
+
+      ${minimalist &&
+      css`
+        background: white;
+        color: #707070;
+        border: 0;
+        border-bottom: 1px solid #e6e6e6;
+      `}
+    `;
+  }}
 `;
 
-const TableRow = styled.tr`
-  border: 1px solid #e6e6e6;
+const TableRow = styled.tr<{ minimalist?: boolean }>`
+  ${({ minimalist }) => css`
+    border: 1px solid #e6e6e6;
+
+    ${minimalist &&
+    css`
+      border: 0;
+      border-top: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+    `}
+  `}
 `;
 
-const TableCell = styled.td`
-  background: #f7f7f7;
-  padding: 16px 8px;
+const TableCell = styled.td<{ minimalist?: boolean }>`
+  ${({ minimalist }) => css`
+    background: #f7f7f7;
+    padding: 16px 8px;
 
-  font-family: ${typography.inter};
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 16px;
-  text-align: center;
-  color: #838383;
+    font-family: ${typography.inter};
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+    color: #838383;
+
+    ${minimalist &&
+    css`
+      background: white;
+    `}
+  `}
 `;
 
 const TableLink = styled.a`
@@ -63,7 +93,8 @@ interface Props {
   queries: {
     fields: {
       name?: string;
-      type: "text" | "full-bottom-link";
+      type: "text" | "full-bottom-link" | "link";
+      columnText?: string;
       mobile?: {
         columnName?: string;
         rowLabel: string;
@@ -77,9 +108,11 @@ interface Props {
       values: string[];
     }[];
   };
+  minimalist?: boolean;
+  children?: ReactNode;
 }
 
-function DesktopTable({ queries }: Props) {
+function DesktopTable({ queries, minimalist, children }: Props) {
   const { fields, data } = queries;
 
   return (
@@ -91,10 +124,21 @@ function DesktopTable({ queries }: Props) {
               const { name, type, desktop } = field;
 
               if (type === "full-bottom-link") {
-                return <ColumnHeader>{desktop?.columnName}</ColumnHeader>;
+                return (
+                  <ColumnHeader
+                    minimalist={minimalist}
+                    key={desktop?.columnName}
+                  >
+                    {desktop?.columnName}
+                  </ColumnHeader>
+                );
               }
 
-              return <ColumnHeader>{name}</ColumnHeader>;
+              return (
+                <ColumnHeader minimalist={minimalist} key={name}>
+                  {name}
+                </ColumnHeader>
+              );
             })}
           </tr>
         </thead>
@@ -104,11 +148,11 @@ function DesktopTable({ queries }: Props) {
             const { values } = item;
 
             return (
-              <TableRow>
+              <TableRow minimalist={minimalist} key={uuid()}>
                 {values.map(function (value, index) {
                   if (fields[index].type === "full-bottom-link") {
                     return (
-                      <TableCell>
+                      <TableCell minimalist={minimalist} key={value}>
                         <TableLink href={value}>
                           {fields[index].desktop?.rowLabel}
                         </TableLink>
@@ -116,13 +160,29 @@ function DesktopTable({ queries }: Props) {
                     );
                   }
 
-                  return <TableCell>{value}</TableCell>;
+                  if (fields[index].type === "link") {
+                    return (
+                      <TableCell minimalist={minimalist} key={value}>
+                        <TableLink href={value}>
+                          {fields[index].columnText}
+                        </TableLink>
+                      </TableCell>
+                    );
+                  }
+
+                  return (
+                    <TableCell minimalist={minimalist} key={value}>
+                      {value}
+                    </TableCell>
+                  );
                 })}
               </TableRow>
             );
           })}
         </tbody>
       </Table>
+
+      {children}
     </Content>
   );
 }

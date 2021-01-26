@@ -1,26 +1,37 @@
 import styled from "styled-components";
-import MobileInvoicesView from "./MobileInvoicesView";
+import { DesktopTable, MobileTable } from "ui";
 
 const Content = styled.div`
   grid-area: invoices;
+  display: grid;
 `;
 
-function InvoicesTable() {
+interface Props {
+  queries: {
+    fields: {
+      name?: string;
+      type: "text" | "full-bottom-link" | "link";
+      columnText?: string;
+      mobile?: {
+        columnName?: string;
+        rowLabel: string;
+      };
+      desktop?: {
+        columnName: string;
+        rowLabel: string;
+      };
+    }[];
+    data: {
+      values: string[];
+    }[];
+  };
+}
+
+function InvoicesTable({ queries }: Props) {
   return (
     <Content>
-      <MobileInvoicesView
-        invoices={[
-          {
-            createdAt: "22/05/2020",
-            closedAt: "22/05/2020",
-            priceInCents: 100,
-            status: "Aberto",
-            paymentLink: "#",
-            invoiceLink: "#",
-            invoiceDocumentLink: "#",
-          },
-        ]}
-      />
+      <MobileTable queries={queries} />
+      <DesktopTable queries={queries} minimalist />
     </Content>
   );
 }

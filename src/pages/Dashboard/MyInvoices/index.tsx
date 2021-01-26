@@ -22,13 +22,114 @@ const QueriesInfo = styled.div`
   }
 `;
 
+interface Props {
+  fields: {
+    name?: string;
+    type: "text" | "full-bottom-link" | "link";
+    columnText?: string;
+    mobile?: {
+      columnName?: string;
+      rowLabel: string;
+    };
+    desktop?: {
+      columnName: string;
+      rowLabel: string;
+    };
+  }[];
+  data: {
+    values: string[];
+  }[];
+}
+
+const DATA: Props = {
+  fields: [
+    {
+      name: "Criação",
+      type: "text",
+    },
+    {
+      name: "Fechamento",
+      type: "text",
+    },
+    {
+      name: "Consumo",
+      type: "text",
+    },
+    {
+      name: "Status",
+      type: "text",
+    },
+    {
+      name: "Pagamento",
+      type: "link",
+      columnText: "Ver boleto",
+    },
+    {
+      name: "Fatura",
+      type: "link",
+      columnText: "Ver detalhe",
+    },
+    {
+      name: "Notas fiscais",
+      type: "link",
+      columnText: "Baixar NF",
+    },
+  ],
+  data: [
+    {
+      values: [
+        "22/04/2020",
+        "22/05/2020",
+        "R$ 100,00",
+        "Aberto",
+        "#",
+        "#",
+        "#",
+      ],
+    },
+    {
+      values: [
+        "22/04/2020",
+        "22/05/2020",
+        "R$ 100,00",
+        "Aberto",
+        "#",
+        "#",
+        "#",
+      ],
+    },
+    {
+      values: [
+        "22/04/2020",
+        "22/05/2020",
+        "R$ 100,00",
+        "Aberto",
+        "#",
+        "#",
+        "#",
+      ],
+    },
+    {
+      values: [
+        "22/04/2020",
+        "22/05/2020",
+        "R$ 100,00",
+        "Aberto",
+        "#",
+        "#",
+        "#",
+      ],
+    },
+  ],
+};
+
 function MyInvoices() {
   return (
     <Content>
       <div>Navbar</div>
       <QueriesInfo>
         <ActivePlanCard />
-        <InvoicesTable />
+        <InvoicesTable queries={DATA} />
       </QueriesInfo>
       <div>Newsletter</div>
       <div>FAQ</div>

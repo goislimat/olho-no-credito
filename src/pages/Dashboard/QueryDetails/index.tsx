@@ -25,17 +25,29 @@ const QueriesInfo = styled.div`
   }
 `;
 
-interface ActiveQueryProps {
-  productName: string;
-  numberOfQueries: number;
-  usedQueriesCount: number;
+interface Props {
+  fields: {
+    name?: string;
+    type: "text" | "full-bottom-link";
+    mobile?: {
+      columnName?: string;
+      rowLabel: string;
+    };
+    desktop?: {
+      columnName: string;
+      rowLabel: string;
+    };
+  }[];
+  data: {
+    values: string[];
+  }[];
 }
 
 function QueryDetails() {
   const router = useRouter();
   const { query } = router;
 
-  const [activeQuery, setActiveQuery] = useState<ActiveQueryProps | null>(null);
+  const [activeQuery, setActiveQuery] = useState<Props | null>(null);
 
   const [isCancelModalOpen, setCancelModalState] = useState<boolean>(false);
 
@@ -47,9 +59,25 @@ function QueryDetails() {
       // TODO: fetch the query based on its id from the backend
       // TODO: replace this set with the values fetched from the brackend
       setActiveQuery({
-        productName: "ONC Consulta PF - PLANO 10",
-        numberOfQueries: 10,
-        usedQueriesCount: 5,
+        fields: [
+          {
+            name: "Nome do produto",
+            type: "text",
+          },
+          {
+            name: "Quantidade de consultas contratadas",
+            type: "text",
+          },
+          {
+            name: "Quantidade de consultas consumidas",
+            type: "text",
+          },
+        ],
+        data: [
+          {
+            values: ["ONC - C20202 - 01895", "10 cons. no mês", "05"],
+          },
+        ],
       });
     }
   }, [query]);
@@ -63,7 +91,7 @@ function QueryDetails() {
         <QueriesInfo>
           <ActivePlanCard />
           <QueryDetailsTable
-            queryDetails={activeQuery}
+            queries={activeQuery}
             openCancelModal={openCancelModal}
           />
         </QueriesInfo>
