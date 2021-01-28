@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Label } from "ui";
-import { colors } from "ui/theme";
+import { colors, typography } from "ui/theme";
 
 const SelectContainer = styled.div`
   position: relative;
@@ -25,6 +25,17 @@ const CustomSelect = styled.select`
   width: 100%;
   border-radius: 6px;
   appearance: none;
+
+  option {
+    font-family: ${typography.inter};
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #a6a6a6;
+  }
 `;
 
 interface Props {

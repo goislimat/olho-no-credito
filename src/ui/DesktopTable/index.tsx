@@ -7,7 +7,7 @@ const Content = styled.div`
   display: none;
 
   ${breakpoints.desktop} {
-    display: grid;
+    display: block;
     background: white;
     box-shadow: 5px 3px 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;

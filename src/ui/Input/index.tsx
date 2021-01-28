@@ -3,7 +3,7 @@ import InputMask, { Props as InputMaskProps } from "react-input-mask";
 
 import { Icon, Label } from "ui";
 import icons from "ui/Icon/icons";
-import { colors } from "ui/theme";
+import { colors, typography } from "ui/theme";
 import masks from "./masks";
 
 interface InputContainerProps {
@@ -49,6 +49,11 @@ const CustomInput = styled(InputMask)<InputMaskProps & { isWhite?: boolean }>`
     background: transparent;
     width: 100%;
     resize: none;
+
+    font-family: ${typography.inter};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
 
     ${isWhite &&
     css`

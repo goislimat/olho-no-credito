@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { DesktopTable, MobileTable } from "ui";
+import InvoicesTableHeader from "./InvoicesTableHeader";
 
 const Content = styled.div`
   grid-area: invoices;
@@ -30,8 +31,12 @@ interface Props {
 function InvoicesTable({ queries }: Props) {
   return (
     <Content>
-      <MobileTable queries={queries} />
-      <DesktopTable queries={queries} minimalist />
+      <MobileTable queries={queries} header={<InvoicesTableHeader />} />
+      <DesktopTable
+        queries={queries}
+        header={<InvoicesTableHeader />}
+        minimalist
+      />
     </Content>
   );
 }
