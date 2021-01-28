@@ -60,8 +60,8 @@ const TableRow = styled.tr<{ minimalist?: boolean }>`
   `}
 `;
 
-const TableCell = styled.td<{ minimalist?: boolean }>`
-  ${({ minimalist }) => css`
+const TableCell = styled.td<{ minimalist?: boolean; status?: string }>`
+  ${({ minimalist, status }) => css`
     background: #f7f7f7;
     padding: 16px 8px;
 
@@ -75,6 +75,16 @@ const TableCell = styled.td<{ minimalist?: boolean }>`
     ${minimalist &&
     css`
       background: white;
+    `}
+
+    ${status === "sucesso" &&
+    css`
+      color: #30c43e;
+    `}
+
+    ${status === "falha" &&
+    css`
+      color: ##ff0120;
     `}
   `}
 `;
@@ -98,7 +108,7 @@ interface Props {
   queries: {
     fields: {
       name?: string;
-      type: "text" | "full-bottom-link" | "link";
+      type: "text" | "full-bottom-link" | "link" | "status";
       columnText?: string;
       mobile?: {
         columnName?: string;
@@ -186,7 +196,11 @@ function DesktopTable({
                   }
 
                   return (
-                    <TableCell minimalist={minimalist} key={value}>
+                    <TableCell
+                      minimalist={minimalist}
+                      key={value}
+                      status={value.toLocaleLowerCase()}
+                    >
                       {value}
                     </TableCell>
                   );

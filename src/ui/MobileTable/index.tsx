@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { v4 as uuid } from "uuid";
 import { breakpoints, typography } from "ui/theme";
 
@@ -40,13 +40,25 @@ const CardLabel = styled.span`
   color: #686868;
 `;
 
-const CardValue = styled.span`
-  font-family: ${typography.roboto};
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 19px;
-  color: #94a2b3;
-  text-align: right;
+const CardValue = styled.span<{ status?: string }>`
+  ${({ status }) => css`
+    font-family: ${typography.roboto};
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #94a2b3;
+    text-align: right;
+
+    ${status === "sucesso" &&
+    css`
+      color: #30c43e;
+    `}
+
+    ${status === "falha" &&
+    css`
+      color: ##ff0120;
+    `}
+  `}
 `;
 
 const FullBottomLink = styled.a`
@@ -81,7 +93,7 @@ interface Props {
   queries: {
     fields: {
       name?: string;
-      type: "text" | "full-bottom-link" | "link";
+      type: "text" | "full-bottom-link" | "link" | "status";
       columnText?: string;
       mobile?: {
         columnName?: string;
@@ -127,7 +139,7 @@ function MobileTable({ queries, header, actions, pagination }: Props) {
               return (
                 <CardRow key={uuid()}>
                   <CardLabel>{name}</CardLabel>
-                  <CardValue>
+                  <CardValue status={data.toLocaleLowerCase()}>
                     {type === "link" ? (
                       <CardLink href={data}>{columnText}</CardLink>
                     ) : (
