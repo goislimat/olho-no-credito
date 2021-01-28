@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { DesktopTable, MobileTable } from "ui";
+import { DesktopTable, MobileTable, Pagintaion } from "ui";
+import Pagination from "ui/Pagination";
 import InvoicesTableHeader from "./InvoicesTableHeader";
 
 const Content = styled.div`
@@ -31,10 +32,15 @@ interface Props {
 function InvoicesTable({ queries }: Props) {
   return (
     <Content>
-      <MobileTable queries={queries} header={<InvoicesTableHeader />} />
+      <MobileTable
+        queries={queries}
+        header={<InvoicesTableHeader />}
+        pagination={<Pagintaion />}
+      />
       <DesktopTable
         queries={queries}
         header={<InvoicesTableHeader />}
+        pagination={<Pagination />}
         minimalist
       />
     </Content>

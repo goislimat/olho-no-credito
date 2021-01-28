@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { v4 as uuid } from "uuid";
 import { breakpoints, typography } from "ui/theme";
 import { ReactNode } from "react";
+import { Pagintaion } from "ui";
 
 const Content = styled.div`
   display: none;
@@ -89,6 +90,10 @@ const TableLink = styled.a`
   color: #2721f3;
 `;
 
+const PaginationContainer = styled.div`
+  margin-top: 32px;
+`;
+
 interface Props {
   queries: {
     fields: {
@@ -111,9 +116,16 @@ interface Props {
   minimalist?: boolean;
   header?: ReactNode;
   actions?: ReactNode;
+  pagination?: ReactNode;
 }
 
-function DesktopTable({ queries, minimalist, header, actions }: Props) {
+function DesktopTable({
+  queries,
+  minimalist,
+  header,
+  actions,
+  pagination,
+}: Props) {
   const { fields, data } = queries;
 
   return (
@@ -184,6 +196,7 @@ function DesktopTable({ queries, minimalist, header, actions }: Props) {
           })}
         </tbody>
       </Table>
+      {pagination && <PaginationContainer>{pagination}</PaginationContainer>}
 
       {actions}
     </Content>

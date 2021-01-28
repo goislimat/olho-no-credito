@@ -98,9 +98,10 @@ interface Props {
   };
   header?: ReactNode;
   actions?: ReactNode;
+  pagination?: ReactNode;
 }
 
-function MobileTable({ queries, header, actions }: Props) {
+function MobileTable({ queries, header, actions, pagination }: Props) {
   const { fields, data } = queries;
 
   return (
@@ -141,6 +142,8 @@ function MobileTable({ queries, header, actions }: Props) {
           </Card>
         );
       })}
+
+      {pagination}
     </Content>
   );
 }
