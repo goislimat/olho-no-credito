@@ -96,14 +96,17 @@ interface Props {
       values: string[];
     }[];
   };
-  children?: ReactNode;
+  header?: ReactNode;
+  actions?: ReactNode;
 }
 
-function MobileTable({ queries, children }: Props) {
+function MobileTable({ queries, header, actions }: Props) {
   const { fields, data } = queries;
 
   return (
     <Content>
+      {header}
+
       {data.map(function (stream, i) {
         const { values } = stream;
 
@@ -134,7 +137,7 @@ function MobileTable({ queries, children }: Props) {
               );
             })}
 
-            {children}
+            {actions}
           </Card>
         );
       })}

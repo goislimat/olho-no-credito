@@ -1,16 +1,5 @@
 import styled, { css } from "styled-components";
-import { DesktopTable, MobileTable } from "ui";
 import { breakpoints, typography } from "ui/theme";
-import QueryDetailsAction from "./QueryDetailsAction";
-import QueryDetailsHeader from "./QueryDetailsHeader";
-
-const Content = styled.div`
-  grid-area: queries;
-
-  ${breakpoints.desktop} {
-    display: grid;
-  }
-`;
 
 const ButtonContainer = styled.div`
   display: grid;
@@ -75,28 +64,11 @@ const Button = styled.button<ButtonProps>`
 `;
 
 interface Props {
-  queries: {
-    fields: {
-      name?: string;
-      type: "text" | "full-bottom-link";
-      mobile?: {
-        columnName?: string;
-        rowLabel: string;
-      };
-      desktop?: {
-        columnName: string;
-        rowLabel: string;
-      };
-    }[];
-    data: {
-      values: string[];
-    }[];
-  };
   openCancelModal: () => void;
 }
 
-function QueryDetailsTable({ queries, openCancelModal }: Props) {
-  const renderActions = () => (
+function QueryDetailsAction({ openCancelModal }: Props) {
+  return (
     <ButtonContainer>
       <Button color="green" onClick={() => {}}>
         Ver contrato
@@ -112,21 +84,6 @@ function QueryDetailsTable({ queries, openCancelModal }: Props) {
       </Button>
     </ButtonContainer>
   );
-
-  return (
-    <Content>
-      <MobileTable
-        queries={queries}
-        header={<QueryDetailsHeader queryId={queries.data[0].values[0]} />}
-        actions={<QueryDetailsAction openCancelModal={openCancelModal} />}
-      />
-      <DesktopTable
-        queries={queries}
-        header={<QueryDetailsHeader queryId={queries.data[0].values[0]} />}
-        actions={<QueryDetailsAction openCancelModal={openCancelModal} />}
-      />
-    </Content>
-  );
 }
 
-export default QueryDetailsTable;
+export default QueryDetailsAction;

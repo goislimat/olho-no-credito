@@ -109,14 +109,17 @@ interface Props {
     }[];
   };
   minimalist?: boolean;
-  children?: ReactNode;
+  header?: ReactNode;
+  actions?: ReactNode;
 }
 
-function DesktopTable({ queries, minimalist, children }: Props) {
+function DesktopTable({ queries, minimalist, header, actions }: Props) {
   const { fields, data } = queries;
 
   return (
     <Content>
+      {header}
+
       <Table>
         <thead>
           <tr>
@@ -182,7 +185,7 @@ function DesktopTable({ queries, minimalist, children }: Props) {
         </tbody>
       </Table>
 
-      {children}
+      {actions}
     </Content>
   );
 }
