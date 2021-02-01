@@ -74,7 +74,7 @@ function TryFreeStep3() {
   });
 
   function goBack() {
-    router.back();
+    // router.back();
   }
 
   return (
