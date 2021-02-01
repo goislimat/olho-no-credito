@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ActivePlanCard, QueriesTable } from "ui";
+import { ActivePlanCard, LoggedNavbar, QueriesTable } from "ui";
 import QueriesLogTable from "ui/QueriesLogTable";
 import { breakpoints } from "ui/theme";
 
@@ -126,7 +126,7 @@ const DATA: Props = {
 function QueriesLog() {
   return (
     <Content>
-      <div>Navbar</div>
+      <LoggedNavbar />
       <QueriesInfo>
         <ActivePlanCard />
         <QueriesLogTable queries={DATA} />

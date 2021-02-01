@@ -17,3 +17,5 @@ export { default as StepCounter } from "./StepCounter";
 export { default as MobileTable } from "./MobileTable";
 export { default as DesktopTable } from "./DesktopTable";
 export { default as Pagintaion } from "./Pagination";
+export { default as LoggedNavbar } from "./LoggedNavbar";
+export { default as SiteLogo } from "./SiteLogo";
