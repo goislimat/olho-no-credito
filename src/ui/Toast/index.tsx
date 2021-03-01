@@ -6,7 +6,7 @@ import { breakpoints, colors } from "ui/theme";
 import { Icon } from "ui";
 
 const ToastContainer = styled.div`
-  z-index: 10;
+  z-index: -10;
   position: absolute;
   top: 40px;
   right: 0;

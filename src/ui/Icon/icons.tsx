@@ -697,4 +697,49 @@ export default {
       </svg>
     );
   },
+  loggedUser: function () {
+    return (
+      <svg
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M25 50C38.8071 50 50 38.8071 50 25C50 11.1929 38.8071 0 25 0C11.1929 0 0 11.1929 0 25C0 38.8071 11.1929 50 25 50Z"
+          fill="url(#paint0_linear)"
+        />
+        <path
+          d="M32.3242 16.2109C32.3242 12.1724 29.0386 8.88672 25 8.88672C20.9614 8.88672 17.6758 12.1724 17.6758 16.2109C17.6758 20.2495 20.9614 23.5352 25 23.5352C29.0386 23.5352 32.3242 20.2495 32.3242 16.2109ZM25 23.5352C17.7306 23.5352 11.8164 29.4493 11.8164 36.7188V38.0916C11.8164 38.508 11.9936 38.9047 12.3037 39.1825C15.8719 42.3798 20.3809 44.1406 25 44.1406C29.6192 44.1406 34.1282 42.3798 37.6963 39.1825C38.0064 38.9047 38.1836 38.5079 38.1836 38.0916V36.7188C38.1836 29.4493 32.2694 23.5352 25 23.5352Z"
+          fill="url(#paint1_linear)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear"
+            x1="25"
+            y1="50"
+            x2="25"
+            y2="0"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#5558FF" />
+            <stop offset="1" stop-color="#00C0FF" />
+          </linearGradient>
+          <linearGradient
+            id="paint1_linear"
+            x1="25"
+            y1="44.1406"
+            x2="25"
+            y2="8.88672"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#ADDCFF" />
+            <stop offset="0.5028" stop-color="#EAF6FF" />
+            <stop offset="1" stop-color="#EAF6FF" />
+          </linearGradient>
+        </defs>
+      </svg>
+    );
+  },
 };
