@@ -151,6 +151,8 @@ const MascotContainer = styled.div`
 `;
 
 const UserActionsContainer = styled.ul`
+  display: none;
+
   ${breakpoints.desktop} {
     grid-column: 3 / 4;
 
