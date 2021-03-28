@@ -1,4 +1,5 @@
 export default {
+  green700: "#017C32",
   green600: "#129747",
   green: "#30C43E",
   green400: "#3CC84B",
@@ -8,6 +9,13 @@ export default {
   greenGradient: "linear-gradient(180deg, #69ED47 0%, #31CF52 100%)",
   horizontalGreenGradient:
     "linear-gradient(96.32deg, #51D93A 5%, #2FC43E 92.85%)",
+
+  titleContainerGreenGradient:
+    "linear-gradient(90.19deg, #62E948 1.25%, #2AB34D 98.84%)",
+  titleContainerRedGradient:
+    "linear-gradient(90.19deg, #ED6058 1.25%, #D53837 98.84%)",
+  trailQuodScoreGradient:
+    "linear-gradient(90.01deg, #FF1013 0.01%, #FF4D10 14.07%, #FF700D 28.13%, #FFC40A 41.15%, #C6CF1D 58.86%, #80BA29 72.4%, #33A740 85.94%, #069A4C 100%)",
 
   blue700: "#22147B",
   blue600: "#4C4094",
