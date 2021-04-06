@@ -29,6 +29,8 @@ export default {
     "linear-gradient(92.53deg, #169AF2 0.34%, #2562F3 98.35%)",
 
   red: "#FF0120",
+  red200: "#D73B39",
+  red300: "#ED5F57",
   red400: "#FD6161",
 
   gray600: "#888888",
