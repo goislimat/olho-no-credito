@@ -8,11 +8,16 @@ import {
   IconPointer,
 } from "pages/FullConsultation/components";
 
-import { Container } from "./styles";
+import { Container, Row, Col } from "./styles";
 
 const ContainerScore = styled.div`
   margin: 78px 0;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FlexCenter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +28,11 @@ const InitRotation = styled.div`
   transform: rotate(160deg);
 `;
 
-const IconRotation = styled.div`
+interface IconRotationProp {
+  angle?: number;
+}
+
+const IconRotation = styled.div<IconRotationProp>`
   ${({ angle }) =>
     css`
       ${angle &&
@@ -66,12 +75,24 @@ function QuodScore({ angle }) {
     <Container>
       <TitleContainer text="Quod Score" color="red" />
       <ContainerScore>
-        <IconDonutScore size={120} />
-        <InitRotation>
-          <IconRotation angle={angle}>
-            <IconPointer size={120} />
-          </IconRotation>
-        </InitRotation>
+        <Row>
+          <Col col={4}>
+            <FlexCenter>
+              <IconDonutScore size={120} />
+              <InitRotation>
+                <IconRotation angle={angle}>
+                  <IconPointer size={120} />
+                </IconRotation>
+              </InitRotation>
+            </FlexCenter>
+          </Col>
+          <Col col={4}>
+            <FlexCenter>AAA</FlexCenter>
+          </Col>
+          <Col col={4}>
+            <FlexCenter>AAA</FlexCenter>
+          </Col>
+        </Row>
       </ContainerScore>
       <ToKnowMore />
     </Container>

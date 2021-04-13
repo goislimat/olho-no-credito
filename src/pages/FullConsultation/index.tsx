@@ -1,12 +1,29 @@
 import { Navbar } from "ui";
+import styled from "styled-components";
+
 import {
   // Share,
+  Infraction,
   QuodScore,
   TrailQuodScore,
   PendingCreditControl,
   Localization,
   ScoreInfo,
 } from "pages/FullConsultation/components";
+import { colors } from "ui/theme";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+`;
+
+const Text = styled.span`
+  font-size: 35px;
+  font-weight: normal;
+  color: ${colors.green300};
+`;
 
 function FullConsultation() {
   const score = 900;
@@ -26,6 +43,12 @@ function FullConsultation() {
       <Navbar />
 
       {/* <Share /> */}
+
+      <Infraction />
+
+      <Container>
+        <Text>Consulta completa</Text>
+      </Container>
 
       <QuodScore angle={scoreCalcAngle(score)} />
 

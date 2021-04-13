@@ -10,3 +10,4 @@ export { default as PendingCreditControl } from "./PendingCreditControl";
 export { default as Localization } from "./Localization";
 export { default as ScoreInfo } from "./ScoreInfo";
 export { default as IconExclamation } from "./IconExclamation";
+export { default as Infraction } from "./Infraction";
