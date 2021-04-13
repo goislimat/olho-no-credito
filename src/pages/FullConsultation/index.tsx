@@ -50,7 +50,7 @@ function FullConsultation() {
         <Text>Consulta completa</Text>
       </Container>
 
-      <QuodScore angle={scoreCalcAngle(score)} />
+      <QuodScore angle={scoreCalcAngle(score)} score={score} />
 
       <ScoreInfo />
 
