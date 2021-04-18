@@ -10,14 +10,6 @@ import {
 
 import { Container, Row, Col } from "./styles";
 
-const MarginTop = styled.div`
-  margin-top: 50px;
-
-  ${breakpoints.desktop} {
-    margin-top: 0;
-  }
-`;
-
 const ContainerScore = styled.div`
   margin: 68px 0;
   display: flex;
@@ -98,75 +90,71 @@ const TextRed = styled.p`
 
 function QuodScore({ angle, score }) {
   return (
-    <MarginTop>
-      <Container>
-        <TitleContainer text="Quod Score" color="red" />
-        <ContainerScore>
-          <Row>
-            <Col col={4} style={{ marginTop: -13 }}>
-              <Row>
-                <Col col={12}>
-                  <FlexCenter>
-                    <IconDonutScore size={160} />
-                    <InitRotation>
-                      <IconRotation angle={angle}>
-                        <IconPointer size={120} />
-                      </IconRotation>
-                    </InitRotation>
-                  </FlexCenter>
-                </Col>
-                <Col col={12} style={{ marginTop: -12 }}>
-                  <FlexBaseline>
-                    <TextRed>{score}</TextRed>
-                    <TextSmall>/1.000</TextSmall>
-                  </FlexBaseline>
-                </Col>
-              </Row>
-            </Col>
-            <Col col={8}>
-              <Row
-                style={{ justifyContent: "space-between", marginBottom: 40 }}
-              >
-                <Col col={4}>
-                  <FlexCenter>
-                    <TextBold>RISCO DE CRÉDITO</TextBold>
-                    <TextRed>ALTO</TextRed>
-                  </FlexCenter>
-                </Col>
+    <Container>
+      <TitleContainer text="Quod Score" color="red" />
+      <ContainerScore>
+        <Row>
+          <Col col={4} style={{ marginTop: -13 }}>
+            <Row>
+              <Col col={12}>
+                <FlexCenter>
+                  <IconDonutScore size={160} />
+                  <InitRotation>
+                    <IconRotation angle={angle}>
+                      <IconPointer size={120} />
+                    </IconRotation>
+                  </InitRotation>
+                </FlexCenter>
+              </Col>
+              <Col col={12} style={{ marginTop: -12 }}>
+                <FlexBaseline>
+                  <TextRed>{score}</TextRed>
+                  <TextSmall>/1.000</TextSmall>
+                </FlexBaseline>
+              </Col>
+            </Row>
+          </Col>
+          <Col col={8}>
+            <Row style={{ justifyContent: "space-between", marginBottom: 40 }}>
+              <Col col={4}>
+                <FlexCenter>
+                  <TextBold>RISCO DE CRÉDITO</TextBold>
+                  <TextRed>ALTO</TextRed>
+                </FlexCenter>
+              </Col>
 
-                <Col col={8} style={{ paddingRight: 40, paddingLeft: 40 }}>
-                  <FlexCenter>
-                    <TextSmall>
-                      Este grupo de consumidores apresenta uma probabilidade de
-                      pagamento menor do que a média da população Brasileira.
-                    </TextSmall>
-                  </FlexCenter>
-                </Col>
-              </Row>
+              <Col col={8} style={{ paddingRight: 40, paddingLeft: 40 }}>
+                <FlexCenter>
+                  <TextSmall>
+                    Este grupo de consumidores apresenta uma probabilidade de
+                    pagamento menor do que a média da população Brasileira.
+                  </TextSmall>
+                </FlexCenter>
+              </Col>
+            </Row>
 
-              <Row style={{ justifyContent: "space-between" }}>
-                <Col col={4}>
-                  <FlexCenter>
-                    <TextBold>PROBRABILIDADE DE PAGAMENTO</TextBold>
-                    <TextRed>1%</TextRed>
-                  </FlexCenter>
-                </Col>
+            <Row style={{ justifyContent: "space-between" }}>
+              <Col col={4}>
+                <FlexCenter>
+                  <TextBold>PROBRABILIDADE DE PAGAMENTO</TextBold>
+                  <TextRed>1%</TextRed>
+                </FlexCenter>
+              </Col>
 
-                <Col col={8} style={{ paddingRight: 40, paddingLeft: 40 }}>
-                  <FlexCenter>
-                    <TextSmall>
-                      Consumidores deste grupo tem 99% de chance de não pagar um
-                      compromisso financeiro nos próximos meses.
-                    </TextSmall>
-                  </FlexCenter>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </ContainerScore>
-        <ToKnowMore />
-      </Container>
-    </MarginTop>
+              <Col col={8} style={{ paddingRight: 40, paddingLeft: 40 }}>
+                <FlexCenter>
+                  <TextSmall>
+                    Consumidores deste grupo tem 99% de chance de não pagar um
+                    compromisso financeiro nos próximos meses.
+                  </TextSmall>
+                </FlexCenter>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </ContainerScore>
+      <ToKnowMore />
+    </Container>
   );
 }
 

@@ -11,3 +11,4 @@ export { default as Localization } from "./Localization";
 export { default as ScoreInfo } from "./ScoreInfo";
 export { default as IconExclamation } from "./IconExclamation";
 export { default as Infraction } from "./Infraction";
+export { default as PersonalData } from "./PersonalData";

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {
   // Share,
   Infraction,
+  PersonalData,
   QuodScore,
   TrailQuodScore,
   PendingCreditControl,
@@ -53,6 +54,8 @@ function FullConsultation() {
       <Container>
         <Text>Consulta completa</Text>
       </Container>
+
+      <PersonalData />
 
       <QuodScore angle={scoreCalcAngle(score)} score={score} />
 
