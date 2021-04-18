@@ -7,11 +7,11 @@ import { IconExclamation } from "pages/FullConsultation/components";
 const Container = styled.div`
   width: 80%;
   display: flex;
-  margin: 47px auto 24px auto;
+  margin: 47px auto;
   flex-direction: column;
 
   ${breakpoints.desktop} {
-    margin: 36px auto 53px auto;
+    margin: 36px auto;
   }
 `;
 

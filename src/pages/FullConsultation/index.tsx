@@ -10,13 +10,17 @@ import {
   Localization,
   ScoreInfo,
 } from "pages/FullConsultation/components";
-import { colors } from "ui/theme";
+import { colors, breakpoints } from "ui/theme";
 
 const Container = styled.div`
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   padding: 60px 0;
+
+  ${breakpoints.desktop} {
+    display: flex;
+  }
 `;
 
 const Text = styled.span`
