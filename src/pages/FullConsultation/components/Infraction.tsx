@@ -15,6 +15,7 @@ const Text = styled.span`
   font-size: 23px;
   font-weight: bold;
   color: white;
+  text-align: center;
 `;
 
 function Infraction() {
