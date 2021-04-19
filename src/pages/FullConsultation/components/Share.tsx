@@ -1,51 +1,31 @@
 import styled from "styled-components";
+import { Button } from "ui";
 import { colors, breakpoints } from "ui/theme";
+import { Row, Col } from "./styles";
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 48px;
+  display: flex;
   margin-top: 44px;
+  margin-bottom: 60px;
 
   ${breakpoints.desktop} {
-    grid-template-columns: 1fr 1fr;
     margin-top: 100px;
+    margin-bottom: 80px;
     padding: 0 6%;
   }
 `;
 
-const QuodContainer = styled.div`
-  display: none;
+const QuodContainer = styled(Col)`
+  display: none !important;
   margin-bottom: 10px;
+  text-align: center;
 
   ${breakpoints.desktop} {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    align-items: center;
-
     margin-bottom: 54px;
 
     img {
-      width: 191px;
-    }
-  }
-`;
-
-const QRContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-
-  img {
-    display: none;
-  }
-
-  ${breakpoints.desktop} {
-    margin-bottom: 54px;
-
-    img {
-      display: block;
       width: 191px;
     }
   }
@@ -66,82 +46,111 @@ const DistributorLabel = styled.span`
   }
 `;
 
-const ShareCode = styled.div`
-  ${breakpoints.desktop} {
-    display: none;
-  }
-`;
-
-const QRShare = styled.div`
+const ContainerButton = styled.div`
   display: flex;
-
-  img,
-  p {
-    display: none;
-  }
+  flex: 1;
+  justify-content: space-between;
 
   ${breakpoints.desktop} {
-    img,
-    p {
-      display: block;
-    }
+    margin: 0 -10px;
   }
 `;
 
-const ContainerBTN = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 48px;
-`;
-
-const ContainerTitle = styled.div`
+const ContainerShareText = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+`;
 
-  span {
-    font-size: 30px;
-    color: ${colors.green200};
-  }
+const ContainerShareMobile = styled.div`
+  margin: 20px 0;
+  display: flex;
+  flex: 1;
 
   ${breakpoints.desktop} {
     display: none;
   }
+`;
+
+const ContainerShareDesktop = styled.div`
+  display: none;
+  flex: 1;
+
+  ${breakpoints.desktop} {
+    display: flex;
+    margin: 40px 0;
+  }
+`;
+
+const ShareTitle = styled.span`
+  font-size: 25px;
+  font-weight: 600;
+  color: ${colors.gray400};
+`;
+
+const ShareText = styled.span`
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 125%;
+  color: ${colors.gray400};
+`;
+
+const ButtonShare = styled(Button)`
+  flex: 1;
+  padding: 10px 0;
+  margin: 0 10px;
 `;
 
 function Share() {
   return (
     <Container>
-      <QuodContainer>
-        <DistributorLabel>Distribuidor autorizado</DistributorLabel>
-        <div>
-          <img src="/static_assets/images/quod.svg" alt="quod logo" />
-        </div>
-      </QuodContainer>
-
-      <ContainerTitle>
-        <span>Consulta completa</span>
-      </ContainerTitle>
-
-      <QRContainer>
-        <QRShare>
+      <Row>
+        <QuodContainer col={4}>
+          <DistributorLabel>Distribuidor autorizado</DistributorLabel>
           <div>
             <img src="/static_assets/images/quod.svg" alt="quod logo" />
           </div>
-          <div>
-            <p>Acesse, salve ou compartilhe a consulta em seu celular</p>
-            <p>
-              Aponte a camêra de seu celular para acessar a sua consulta no seu
-              dispositivo móvel
-            </p>
-            <ContainerBTN>
-              <div>IMPRIMIR</div>
-              <div>GERAR PDF</div>
-            </ContainerBTN>
-          </div>
-        </QRShare>
-
-        <ShareCode>Compartilhar</ShareCode>
-      </QRContainer>
+        </QuodContainer>
+        <Col col={5}>
+          <Row>
+            <Col col={12} order={2} orderDesktop={1}>
+              <ContainerShareMobile>
+                <ButtonShare background="horizontalBlueGradient">
+                  COMPARTILHAR
+                </ButtonShare>
+              </ContainerShareMobile>
+              <ContainerShareDesktop>
+                <Row>
+                  <Col col={4}>
+                    <img src="/static_assets/images/quod.svg" alt="quod logo" />
+                  </Col>
+                  <Col col={8}>
+                    <ContainerShareText>
+                      <ShareTitle>
+                        Acesse, salve ou compartilhe a consulta em seu celular
+                      </ShareTitle>
+                      <ShareText>
+                        Aponte a camêra de seu celular para acessar a sua
+                        consulta no seu dispositivo móvel
+                      </ShareText>
+                    </ContainerShareText>
+                  </Col>
+                </Row>
+              </ContainerShareDesktop>
+            </Col>
+            <Col col={12} order={1} orderDesktop={2}>
+              <ContainerButton>
+                <ButtonShare background="horizontalBlueGradient">
+                  IMPRIMIR
+                </ButtonShare>
+                <ButtonShare background="horizontalBlueGradient">
+                  GERAR PDF
+                </ButtonShare>
+              </ContainerButton>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </Container>
   );
 }

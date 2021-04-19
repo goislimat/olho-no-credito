@@ -2,7 +2,7 @@ import { Navbar } from "ui";
 import styled from "styled-components";
 
 import {
-  // Share,
+  Share,
   Infraction,
   PersonalData,
   QuodScore,
@@ -14,6 +14,17 @@ import {
 import { colors, breakpoints } from "ui/theme";
 
 const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 44px 0;
+
+  ${breakpoints.desktop} {
+    display: none;
+  }
+`;
+
+const ContainerDesktop = styled.div`
   display: none;
   justify-content: center;
   align-items: center;
@@ -25,9 +36,13 @@ const Container = styled.div`
 `;
 
 const Text = styled.span`
-  font-size: 35px;
+  font-size: 30px;
   font-weight: normal;
   color: ${colors.green300};
+
+  ${breakpoints.desktop} {
+    font-size: 35px;
+  }
 `;
 
 function FullConsultation() {
@@ -47,13 +62,17 @@ function FullConsultation() {
     <>
       <Navbar />
 
-      {/* <Share /> */}
-
-      <Infraction />
-
       <Container>
         <Text>Consulta completa</Text>
       </Container>
+
+      <Share />
+
+      <Infraction />
+
+      <ContainerDesktop>
+        <Text>Consulta completa</Text>
+      </ContainerDesktop>
 
       <PersonalData />
 
